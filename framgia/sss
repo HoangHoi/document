@@ -1,0 +1,37 @@
+blogs thì là tên project thì hay hơn tên bảng, đặt tên bảng blogs -> post
+blog_categories -> categories, blog_comments -> comments, users_follow -> users_follows
+trong posts thì categories_id -> category_id
+trong bảng comments thì comment -> content thì hay hơn
+blogs -> posts: 
+- description -> kiểu text
+- có thể thêm published_at mục đích là ấn định thời gian post bài chẳng hạn.
+- description là mô tả qua thôi đúng không, thế có cần cột contents không
+
+blog_categories -> categories
+- Có cần thêm description hoặc content gì không?
+
+users:
+- thêm avatar vào đến lúc show/edit profile thì còn có cái mà làm :D
+- thêm role cho user
+
+Step by step
+1. Design database
+2. Add task on redmine + estimate time
+3. Static page
+4. Init model + relationship
+5. Login logout
+6. Other pulls
+Notice: Trừ pull về init model, còn lại các pull khác không nhiều hơn 15 files
+Các bạn trong team review chéo cho nhau + comment OK vào pull sau khi review xong mà không có lỗi nào
+
+ public function index(Request $request)
+        {
+            if($request->ajax()){
+                return "AJAX";
+            }
+            return "HTTP";
+        }
+
+Công ty mình không xài form html mà sử dụng Laravel Collective để viết facade kiểu Form:: ý :v anh nên sửa dần không lần sau ăn gạch
+kết thúc 1 file phải xuống dòng
+

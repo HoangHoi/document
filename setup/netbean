@@ -1,0 +1,8 @@
+
+#install jdk
+apt-get install openjdk-8-jdk
+
+#install netbean
+#tai netbean tu trang chu
+chmod +x /home/tumivn/downloads/netbeans-8.02-linux.sh
+bash /home/tumivn/downloads/netbeans-8.02-linux.sh

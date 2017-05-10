@@ -1,0 +1,3 @@
+let element = document.getElementsByClassName('avatar-background')[0];
+let boundingElement = element.getBoundingClientRect();
+console.log(boundingElement);

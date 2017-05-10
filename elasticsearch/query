@@ -1,0 +1,49 @@
+GET /_cat/master?v
+GET /_cat/master?help
+GET /_cat/nodes?h=ip,port,heapPercent,name
+GET /_cat/indices?bytes=b
+GET /_cat/indices?pretty
+GET /_cat/aliases?v
+GET /_cat/allocation?v
+GET /_cat/count?v
+GET /_cat/count/books?v
+GET /_cat/fielddata?v
+GET /_search
+{
+    "query": {
+        "bool": {
+            "should": [
+               {"match": {
+                  "title": "porro"
+               }},
+               {"match": {
+                  "description": "Omnis"
+               }}
+            ]
+        }
+    }
+}
+POST /books/books
+{
+    "title": "Hoi dep trai",
+    "description": "Duy dep trai"
+}
+GET /_search
+{
+    "query": {
+        "bool": {
+            "should": [
+               {"match": {
+                  "title": "hoi"
+               }},
+               {"match": {
+                  "description": "duy"
+               }}
+            ]
+        }
+    }
+}
+PUT _xpack/security/user/elastic/_password
+{
+  "password": "pass"
+}

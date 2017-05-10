@@ -1,0 +1,28 @@
+# Hàm này sẽ chạy khi props thay đổi.
+    componentWillMount() {
+        this.updateTab(this.props);
+    }
+
+# Redirect to link
+        this.props.router.push(`admins/${user.id}/edit`);
+
+# kiểm tra sự tồn tại property của đối tượng
+data.hasOwnProperty('error')
+
+# Khai báo nhiều biến cùng trong state
+const {courseClass, teacher, startedAt, endedAt, day, isActive} = this.state;
+
+# Clone object
+_.cloneDeep(week.startDay);
+
+# Chèn thẻ vào component
+<div key={i} dangerouslySetInnerHTML={{__html: log.message}} />
+
+# người dùng có thể Edit thẻ
+getElementById('YourDiv').contentEditable = true;
+<div className="input"  contentEditable={true}>
+    <span>daulacomment day la comment</span>
+    <br/>
+    <span>daulacomment day la comment</span>
+    <br/>
+</div>

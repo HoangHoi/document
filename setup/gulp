@@ -1,0 +1,8 @@
+#install
+sudo npm install -g gulp-cli
+
+#run task copyfile
+gulp copyfile
+
+#run all
+gulp

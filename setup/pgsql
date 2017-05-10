@@ -1,0 +1,31 @@
+# install
+sudo apt-get update
+sudo apt-get install postgresql postgresql-contrib
+
+# Switch over to the postgres account
+sudo -i -u postgres
+
+# access a Postgres prompt
+postgres@server:~$ psql
+
+# Exit out of the PostgreSQL prompt
+postgres=# \q
+
+# Accessing a Postgres Prompt Without Switching Accounts
+sudo -u postgres psql
+
+# create user
+postgres@server:~$ createuser --interactive
+
+# help
+postgres@server:~$ man createuser
+
+#--------------postgres query----------------------
+# Create a New Database
+createdb sammy
+
+# Change password
+alter user postgres password '12344321';
+
+# note
+# pgsql khong co ngay 0000-00-00 00:00:00 lay 1 ngay trong qua khu de set cho khoang thoi gian bai chua duoc publish vi du: 2000-12-21 12:21:12

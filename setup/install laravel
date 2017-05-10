@@ -1,0 +1,2 @@
+#sua loi trang trang
+sudo chmod -R 777 bootstrap/cache storage

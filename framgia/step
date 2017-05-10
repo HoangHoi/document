@@ -1,0 +1,8 @@
+Step by step
+1. Design database
+2. Add task on redmine + estimate time
+3. Static page
+4. Init model + relationship
+5. Login logout
+6. Other pulls
+Notice: Trừ pull về init model, còn lại các pull khác không nhiều hơn 15 files

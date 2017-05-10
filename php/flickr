@@ -1,0 +1,106 @@
+https://api.flickr.com/services/rest/?api_key=168ec0d5de10a7a5e35421af55b448dd&method=flickr.photos.getSizes&photo_id=30012158583&format=json
+
+Array
+(
+    [sizes] => Array
+        (
+            [canblog] => 0
+            [canprint] => 0
+            [candownload] => 0
+            [size] => Array
+                (
+                    [0] => Array
+                        (
+                            [label] => Square
+                            [width] => 75
+                            [height] => 75
+                            [source] => https://farm1.staticflickr.com/29/54166091_6456c63950_s.jpg
+                            [url] => https://www.flickr.com/photos/latitudes/54166091/sizes/sq/
+                            [media] => photo
+                        )
+
+                    [1] => Array
+                        (
+                            [label] => Large Square
+                            [width] => 150
+                            [height] => 150
+                            [source] => https://farm1.staticflickr.com/29/54166091_6456c63950_q.jpg
+                            [url] => https://www.flickr.com/photos/latitudes/54166091/sizes/q/
+                            [media] => photo
+                        )
+
+                    [2] => Array
+                        (
+                            [label] => Thumbnail
+                            [width] => 100
+                            [height] => 80
+                            [source] => https://farm1.staticflickr.com/29/54166091_6456c63950_t.jpg
+                            [url] => https://www.flickr.com/photos/latitudes/54166091/sizes/t/
+                            [media] => photo
+                        )
+
+                    [3] => Array
+                        (
+                            [label] => Small
+                            [width] => 240
+                            [height] => 192
+                            [source] => https://farm1.staticflickr.com/29/54166091_6456c63950_m.jpg
+                            [url] => https://www.flickr.com/photos/latitudes/54166091/sizes/s/
+                            [media] => photo
+                        )
+
+                    [4] => Array
+                        (
+                            [label] => Small 320
+                            [width] => 320
+                            [height] => 256
+                            [source] => https://farm1.staticflickr.com/29/54166091_6456c63950_n.jpg
+                            [url] => https://www.flickr.com/photos/latitudes/54166091/sizes/n/
+                            [media] => photo
+                        )
+
+                    [5] => Array
+                        (
+                            [label] => Medium
+                            [width] => 500
+                            [height] => 400
+                            [source] => https://farm1.staticflickr.com/29/54166091_6456c63950.jpg
+                            [url] => https://www.flickr.com/photos/latitudes/54166091/sizes/m/
+                            [media] => photo
+                        )
+
+                    [6] => Array
+                        (
+                            [label] => Medium 640
+                            [width] => 640
+                            [height] => 512
+                            [source] => https://farm1.staticflickr.com/29/54166091_6456c63950_z.jpg
+                            [url] => https://www.flickr.com/photos/latitudes/54166091/sizes/z/
+                            [media] => photo
+                        )
+
+                    [7] => Array
+                        (
+                            [label] => Large
+                            [width] => 1024
+                            [height] => 819
+                            [source] => https://farm1.staticflickr.com/29/54166091_6456c63950_b.jpg
+                            [url] => https://www.flickr.com/photos/latitudes/54166091/sizes/l/
+                            [media] => photo
+                        )
+
+                )
+
+        )
+
+    [stat] => ok
+)
+
+
+
+Array
+(
+    [stat] => fail
+    [code] => 1
+    [message] => Photo not found
+)

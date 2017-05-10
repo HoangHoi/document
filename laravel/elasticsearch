@@ -1,0 +1,26 @@
+# composer.json
+"elasticquent/elasticquent": "dev-master"
+
+# app/config.php
+
+'providers' => [
+    ...
+    Elasticquent\ElasticquentServiceProvider::class,
+],
+
+'aliases' => [
+    ...
+    'Es' => Elasticquent\ElasticquentElasticsearchFacade::class,
+],
+
+
+# use
+use Elasticquent\ElasticquentTrait;
+
+class Book extends Eloquent
+{
+    use ElasticquentTrait;
+}
+
+# add config file
+php artisan vendor:publish --provider="Elasticquent\ElasticquentServiceProvider"

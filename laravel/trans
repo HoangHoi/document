@@ -1,0 +1,15 @@
+
+{{ trans('messages.welcome') }}
+
+@lang('messages.welcome')
+
+
+'welcome' => 'Welcome, :name',
+
+echo trans('messages.welcome', ['name' => 'dayle']);
+
+'welcome' => 'Welcome, :NAME', // Welcome, DAYLE
+'goodbye' => 'Goodbye, :Name', // Goodbye, Dayle
+
+
+https://laravel.com/docs/5.3/localization

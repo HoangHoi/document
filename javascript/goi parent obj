@@ -1,0 +1,16 @@
+var user = {
+    Name: "Some user",
+    Methods: {
+        ShowGreetings: function() {
+            alert(this.Parent.Name); // "this" is the Methods object
+        },
+        GetUserName: function() { }
+    },
+    Init: function() {
+        this.Methods.Parent = this; // it allows the Methods object to know who its Parent is
+        delete this.Init; // if you don't need the Init method anymore after the you instanced the object you can remove it
+        return this; // it gives back the object itself to instance it
+    }
+}.Init();
+
+

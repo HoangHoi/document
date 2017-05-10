@@ -1,0 +1,8 @@
+
+
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+
+#delete branch on remote
+git push --delete origin develop 
+

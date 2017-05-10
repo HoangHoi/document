@@ -1,0 +1,8 @@
+#add aliases array in config/app.php
+'Str' => Illuminate\Support\Str::class,
+
+#----------------use--------------------------
+#limit word
+Str::words($entry->body, 10, "...");
+
+

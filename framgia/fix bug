@@ -1,0 +1,11 @@
+public_path avatar dir image
+public_path book dir image
+fix loi is_admin
+fix loi publish date category create, update
+fix loi 
+getGenderNameAttribute làm lỗi http://laravel-test.vn/admin/review/ajax/list phải select cả gender thì mới chạy được
+email phan biet chu hoa chu thuong
+book chua co category
+fix loi delete category phai delete book
+them chuc nang xoa anh
+khi link anh book khong ton tai thi phai cho anh mac dinh

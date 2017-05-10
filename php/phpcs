@@ -1,0 +1,5 @@
+cd /usr/share/php/PHP/CodeSniffer/Standards/
+git clone git@github.com:wataridori/framgia-php-codesniffer.git Framgia
+
+# install xdebug
+sudo apt-get install php-xdebug

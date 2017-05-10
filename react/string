@@ -1,0 +1,3 @@
+# Cộng các chuỗi
+<Link to={`/teachers/${lesson.teacher.id}/profile`}>
+

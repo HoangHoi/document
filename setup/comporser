@@ -1,0 +1,8 @@
+#update
+apt-get update
+
+#istall curl, php5, git. Neu cai php7 roi thi thoi
+apt-get install curl php5-cli git
+
+#chay lenh curl tai va cai comporser
+curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer

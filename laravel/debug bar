@@ -1,0 +1,12 @@
+# require and install
+composer require barryvdh/laravel-debugbar
+composer update
+
+# add ServiceProvider in config/app.php
+Barryvdh\Debugbar\ServiceProvider::class,
+
+# add facades in app.php
+'Debugbar' => Barryvdh\Debugbar\Facade::class,
+
+# Copy the package config to your local config
+php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"

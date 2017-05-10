@@ -1,0 +1,86 @@
+#install
+sudo apt-get update
+sudo apt-get install build-essential tcl
+cd /tmp
+curl -O http://download.redis.io/redis-stable.tar.gz
+tar xzvf redis-stable.tar.gz
+cd redis-stable
+make
+make test
+sudo make install
+
+#config
+sudo cp redis.conf /etc/redis
+
+sudo gedit /etc/redis/redis.conf
+---------------edit--------------
+supervised no
+---------------to----------------
+supervised systemd
+=================================
+---------------edit--------------
+dir ./
+---------------to----------------
+dir /var/lib/redis
+---------------------------------
+
+sudo gedit /etc/systemd/system/redis.service
+-------------------content----------------
+[Unit]
+Description=Redis In-Memory Data Store
+After=network.target
+
+[Service]
+User=redis
+Group=redis
+ExecStart=/usr/local/bin/redis-server /etc/redis/redis.conf
+ExecStop=/usr/local/bin/redis-cli shutdown
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+==========================================
+
+sudo adduser --system --group --no-create-home redis
+sudo mkdir /var/lib/redis
+sudo chown redis:redis /var/lib/redis
+sudo chmod 770 /var/lib/redis
+
+#start and check status
+sudo systemctl start redis
+sudo systemctl status redis
+
+#test
+redis-cli
+ping
+----output----
+PONG
+--------------
+
+set test "It's working!"
+------output-------
+OK
+-------------------
+
+get test
+------output-------
+"It's working!"
+-------------------
+
+exit
+
+sudo systemctl restart redis
+redis-cli
+
+get test
+------output-------
+"It's working!"
+-------------------
+
+#Enable Redis to Start at Boot
+sudo systemctl enable redis
+------output-------
+Created symlink from /etc/systemd/system/multi-user.target.wants/redis.service to /etc/systemd/system/redis.service.
+-------------------
+
+

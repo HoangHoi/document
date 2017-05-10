@@ -1,0 +1,10 @@
+
+TourSchedule::select(['id', 'tour_id', 'start'])->with([
+	'tour' => function ($query) {
+    		$query->select(['id', 'name']);
+	},
+])->orderBy('start')->groupBy('tour_id')->get();
+
+#Where raw
+->whereRaw('YEAR(start) BETWEEN ? AND ?', [2015, 2016])
+

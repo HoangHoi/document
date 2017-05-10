@@ -1,0 +1,20 @@
+if ($search = Request::get('q')) 
+     {
+    $profiles = Profile::with('user','likes', 'category','subcategory')->where(function($query) use ($search)
+            
+            { 
+                $query->where('storename','LIKE',"%$search%")
+                      ->orWhere('country','LIKE',"%$search%")
+                      ->orWhere('about','LIKE',"%$search%")
+                      ->orWhere('state','LIKE',"%$search%")
+                     ->orWhere('district','LIKE',"%$search%")
+                      ->orWhere('city','LIKE',"%$search%")
+                      ->orWhere('zipcode','LIKE',"%$search%")
+                      ->orWhere('location','LIKE',"%$search%");
+                      //->with(['Category' => function($qu){
+                       // $query->where('name','LIKE',"%$search%");
+                      //}]);
+
+            })
+               ->latest()->paginate(12);
+     }

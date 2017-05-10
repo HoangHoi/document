@@ -1,0 +1,46 @@
+#login voi tai khoan username
+mysql -u [username] -p
+
+#hien thi tat ca database
+show databases;
+
+#tao database
+create database phpmyadmin;
+
+#-------------------------------------------------------------------------------
+#hien thi tat ca user
+select host, user from mysql.user;
+
+#hien thi quyen cua root
+show grants for 'root'@'localhost';
+
+#cap quyen cho username
+grant [type of permission] on [database name].[table name] to '[username]'@'localhost';
+
+#cap tat ca quyen cho user
+grant all on * . * to 'username' [WITHGRANTOPTION];
+
+#cap tat ca quyen cho username
+grant all on dbname.* to username@localhost;
+
+#cap quyen select trong database dbname cho username
+grant SELECT on dbname.* to username@localhost;
+
+#tao user phpmyadmin pass la 12344321
+create user 'phpmyadmin'@'localhost' identified by '12344321';
+
+#xoa user demo
+drop user 'demo'@'localhost';
+
+#reload lai
+FLUSH PRIVILEGES;
+
+#-----------------------------------------------------------------------------
+#hien cac bien validate password
+show variables like 'validate_password%';
+
+#thay doi bien validate password
+set global validate_password_special_char_count = 0;
+
+#thoat
+exit

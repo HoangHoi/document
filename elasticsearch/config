@@ -1,0 +1,2 @@
+#open file config
+$sudo gedit /etc/elasticsearch/elasticsearch.yml

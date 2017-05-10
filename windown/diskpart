@@ -1,0 +1,3 @@
+diskpart
+list disk
+select disk 0

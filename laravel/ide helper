@@ -1,0 +1,20 @@
+# require and install
+composer require barryvdh/laravel-ide-helper
+composer update
+
+# add the service provider to the providers array in config/app.php
+Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+
+# edit App/Providers/AppServiceProvider.php
+#------------------content-----------------------------------------------------------------
+public function register()
+{
+    if ($this->app->environment() !== 'production') {
+        $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+    }
+    // ...
+}
+#------------------------------------------------------------------------------------------
+
+# generate the docs
+php artisan ide-helper:generate

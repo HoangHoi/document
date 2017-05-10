@@ -1,0 +1,51 @@
+# login
+heroku login
+
+# Add key
+heroku keys:add
+
+# create project
+heroku create projectname
+
+# set build pack php
+heroku buildpacks:set heroku/php
+
+# config root path
+echo web: vendor/bin/heroku-php-apache2 public/ > Procfile
+
+# config database port 5432
+#-----------------content---------------------
+'default' => 'pgsql',
+
+'pgsql' => [            'driver'   => 'pgsql',          
+                        'host'     => '127.0.0.1',          
+                        'database' => 'fms',            
+                        'username' => 'postgres',           
+                        'password' => 'root',           
+                        'charset'  => 'utf8',           
+                        'prefix'   => '',           
+                        'schema'   => 'public',         ],
+#---------------------------------------------
+# or .env file
+#----------------------content---------------
+DB_CONNECTION=pgsql
+DB_HOST=ec2-54-235-89-113.compute-1.amazonaws.com
+DB_PORT=5432
+DB_DATABASE=dfpgks7rcro07b
+DB_USERNAME=rymbxihkaubnxl
+DB_PASSWORD=6gQ9Bc3K1oz3lDfgZOpzcHm5vn
+#--------------------------------------------
+
+# run on heroku
+heroku run php artisan migrate
+
+# Loi gd thi require them trong file coposer.json
+"require": {
+    "ext-gd": "*"
+}
+# chay lenh update
+composer update
+
+# Create database
+heroku addons:create heroku-postgresql:hobby-dev
+

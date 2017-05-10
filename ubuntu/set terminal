@@ -1,0 +1,3 @@
+gsettings set org.gnome.desktop.default-applications.terminal exec <YOUR-TERMINAL>
+vd:
+gsettings set org.gnome.desktop.default-applications.terminal exec terminator

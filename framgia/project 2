@@ -1,0 +1,44 @@
+Framgia Booking tours
+[Admin]
+Manage User
+Manage Tour
+Manage booking requests
+Manage user reviews
+Manage revenue
+Manage category
+
+[Guess]
+View tour
+View review about place, food, news 
+Search tour
+Register account
+
+[User]
+View tour
+Booking tour
+Payment tour by internet banking
+Sign in, sign out
+Can authenticate via Facebook, Twitter, Google
+Manage user bank account
+View review about place, food, news 
+Search tour
+Manage profile
+Manage review of themself
+Comment a review
+Like review
+Rating a tour
+
+[Activity]
+- Booking tour
+- Cancel tour
+- Create new review
+- User pay tour
+
+[Banking]
+Payment
+
+Advantage 2
+Calculate total money by day send to admin
+Calculate rating of a tour each 6 hour
+Send mail to notify to admin when user books a tour
+Send mail to admin, user when pay successfully

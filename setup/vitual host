@@ -1,0 +1,47 @@
+apt-get update
+apt-get install apache2
+
+cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/thachpham.com.conf
+
+
+<VirtualHost *:80>
+        ServerName thachpham.com
+        ServerAlias www.thachpham.com
+        ServerAdmin contact@thachpham.com
+ 
+        DocumentRoot /home/thachpham.com/public_html
+ 
+        <Directory /home/thachpham.com/public_html>
+                Options FollowSymLinks
+                AllowOverride All
+                Order allow,deny
+                Allow from all
+                Require all granted
+        </Directory>
+ 
+        # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
+        # error, crit, alert, emerg.
+        # It is also possible to configure the loglevel for particular
+        # modules, e.g.
+        LogLevel error
+ 
+        ErrorLog /home/thachpham.com/log/error.log
+        CustomLog /home/thachpham.com/log/access.log combined
+ 
+        # For most configuration files from conf-available/, which are
+        # enabled or disabled at a global level, it is possible to
+        # include a line for only one particular virtual host. For example the
+        # following line enables the CGI configuration for this host only
+        # after it has been globally disabled with "a2disconf".
+        #Include conf-available/serve-cgi-bin.conf
+</VirtualHost>
+
+
+
+a2ensite thachpham.com
+service apache2 reload
+a2enmod rewrite
+service apache2 restart
+
+
+

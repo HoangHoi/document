@@ -1,0 +1,7 @@
+
+    $a = Album::where('artist','Something Corporate')
+        ->get();
+    $b = Album::where('artist','Matt Nathanson')
+        ->get();
+
+    $result = $a->merge($b);

@@ -1,0 +1,11 @@
+# Get tag name
+$('#category_parent_id').prop('tagName')
+
+# Replace tag
+$(this).replaceWith('<h5>' + this.innerHTML + '</h5>');
+
+#not
+$icon.parents('.control').find('.check .icon').not($icon)
+
+#removeAttr
+$icon.removeAttr('data-checked');
