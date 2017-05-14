@@ -1,0 +1,40 @@
+#numix-icon-theme-circle
+sudo add-apt-repository ppa:numix/ppa
+sudo apt-get update
+sudo apt-get install numix-icon-theme-circle
+
+#linux-dark-icons
+sudo add-apt-repository ppa:noobslab/icons
+sudo apt-get update
+sudo apt-get install linux-dark-icons
+
+#shadow-icon-theme
+sudo add-apt-repository ppa:noobslab/icons
+sudo apt-get update
+sudo apt-get install shadow-icon-theme
+
+#square-icons
+sudo add-apt-repository ppa:noobslab/icons2
+sudo apt-get update
+sudo apt-get install square-icons
+
+#flatwoken-icons
+sudo add-apt-repository ppa:noobslab/icons
+sudo apt-get update
+sudo apt-get install flatwoken-icons
+
+#square-beam-icons
+sudo add-apt-repository ppa:noobslab/icons
+sudo apt-get update
+sudo apt-get install square-beam-icons
+
+#emerald-icon-theme
+sudo add-apt-repository ppa:noobslab/icons
+sudo apt-get update
+sudo apt-get install emerald-icon-theme
+
+
+Terminal Commands:
+sudo add-apt-repository ppa:noobslab/icons
+sudo apt-get update
+sudo apt-get install obsidian-1-icons

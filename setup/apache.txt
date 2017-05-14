@@ -1,0 +1,4 @@
+﻿
+# reinstall
+sudo apt-get purge apache2
+sudo apt-get install apache2

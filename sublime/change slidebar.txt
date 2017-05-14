@@ -1,0 +1,15 @@
+﻿# install PackageResourceViewer via Package Control
+Ấn ctrl + shift + p
+Gõ prv : PackageResourceViewer.Open Resource
+Tìm đến gói giao diện đang sử dụng
+Tìm đến giao diện đang dùng có đuôi là .sublime-theme
+Tìm chữ sidebar_label
+Sửa lại thành
+{
+    "class": "sidebar_label",
+    "color": [0, 0, 0],
+    "font.bold": false,
+    "font.italic": false, // <-- add comma
+    "font.size": 14 // <-- new line
+    // , "shadow_color": [250, 250, 250], "shadow_offset": [0, 0]
+},

@@ -1,0 +1,4 @@
+﻿# add biến môi trường (đối với windows)
+# chạy lệnh
+VBoxManage modifyhd windows7.vdi --resize 30000
+=> Sử dụng công cụ trên máy ảo để extend vùng mở rộng

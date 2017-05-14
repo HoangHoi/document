@@ -1,0 +1,74 @@
+﻿- Cấu hình gói node js trước, cấu hình php sau thì khi deploy npm sẽ được cài đặt trước. Lúc đó composer.json mới chạy được code npm
+- Cấu hình file composer.json
+#----------------------------------------------------------------------------------
+{
+    "name": "laravel/laravel",
+    "description": "The Laravel Framework.",
+    "keywords": ["framework", "laravel"],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": ">=5.6.4",
+        "laravel/framework": "5.4.*",
+        "laravel/tinker": "~1.0",
+        "doctrine/dbal": "^2.5",
+        "barryvdh/laravel-debugbar": "^2.2",
+        "barryvdh/laravel-ide-helper": "^2.2",
+        "sendgrid/sendgrid": "^5.1",
+        "guzzlehttp/guzzle": "^6.2",
+        "squizlabs/php_codesniffer": "*",
+        "ext-gd": "*"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "~1.4",
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "~5.7"
+    },
+    "autoload": {
+        "classmap": [
+            "database"
+        ],
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "php artisan key:generate"
+        ],
+        "deploy": [
+            "php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+            "php artisan key:generate",
+            "php artisan migrate",
+            "npm install",
+            "npm run production"
+        ],
+        "post-install-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postInstall",
+            "php artisan optimize",
+            "@deploy"
+        ],
+        "post-update-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+            "php artisan optimize",
+            "@deploy"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true
+    }
+}
+#----------------------------------------------------------------------------------
+
+- Tạo database
+- Cấu hình các biến env trên trang Heroku
+- Kết nối với Git để deploy tự động

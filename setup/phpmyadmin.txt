@@ -1,0 +1,25 @@
+#tao database phpmyadmin va user phpmyadmin va cap quyen de phpmyadmin su dung mysql
+#co the boa qua buoc cau hinh va cau hinh trong cac file
+#/etc/phpmyadmin/config-db.php
+#/etc/phpmyadmin/config.inc.php
+
+#cai phpmyadmin
+sudo apt-get install phpmyadmin php-mbstring php-gettext
+sudo phpenmod mcrypt
+sudo phpenmod mbstring
+
+############# Co the boa qua neu no tu dong tao #################
+#tao user phpmyadmin pass la 12344321
+create user 'phpmyadmin'@'localhost' identified by '12344321';
+#cap tat ca quyen cho user
+grant all on * . * to 'username' [WITHGRANTOPTION];
+#################################################################
+
+#tao ket noi voi domain
+sudo ln -s /etc/phpmyadmin/apache.conf /etc/apache2/conf-available/phpmyadmin.conf
+sudo a2enconf phpmyadmin.conf
+
+#load lai apache hoac khoi dong lai
+sudo systemctl reload apache2.service
+
+

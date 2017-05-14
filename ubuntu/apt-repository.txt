@@ -1,0 +1,5 @@
+﻿# add
+sudo add-apt-repository "deb https://cli-assets.heroku.com/branches/stable/apt ./"
+
+# remove
+sudo add-apt-repository --remove "deb https://cli-assets.heroku.com/branches/stable/apt ./"

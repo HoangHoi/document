@@ -1,0 +1,5 @@
+sudo chmod a+rw /dev/ttyUSB0
+sudo usermod -a -G dialout user
+make TARGET=z1 border-router.upload
+make connect-router
+make TARGET=z1 z1-reset

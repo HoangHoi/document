@@ -1,3 +1,9 @@
+#install
+sudo apt-get update
+sudo apt-get install mysql-server
+sudo mysql_secure_installation
+
+
 #login voi tai khoan username
 mysql -u [username] -p
 
@@ -5,7 +11,7 @@ mysql -u [username] -p
 show databases;
 
 #tao database
-create database phpmyadmin;
+create database test1;
 
 #-------------------------------------------------------------------------------
 #hien thi tat ca user
@@ -31,6 +37,12 @@ create user 'phpmyadmin'@'localhost' identified by '12344321';
 
 #xoa user demo
 drop user 'demo'@'localhost';
+
+# cap cho nguoi dung truy cap thong tin ma ho can
+GRANT ALL PRIVILEGES ON * . * TO 'newuser'@'localhost';
+
+# thu hoi lai quyen
+REVOKE [type of permission] ON [database name].[table name] FROM '[username]'@'localhost';
 
 #reload lai
 FLUSH PRIVILEGES;

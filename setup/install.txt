@@ -1,0 +1,60 @@
+basic stuff install (optional)
+
+sudo apt-get install git
+sudo apt-get install zip
+LAMP
+
+sudo apt-get install tasksel
+sudo tasksel install lamp-server
+CURL
+
+sudo apt-get install curl php-curl php-mcrypt php-mbstring php-gettext
+enable mods
+
+sudo phpenmod mcrypt
+sudo phpenmod mbstring
+sudo a2enmod rewrite
+sudo systemctl restart apache2
+Composer
+
+curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
+install phpmyadmin
+
+sudo apt-get install phpmyadmin     
+later accessible through localhost/phpmyadmin
+
+Creating Laravel Project
+
+cd /var/www/html/
+sudo composer create-project laravel/laravel work --prefer-dist
+sudo chmod -R 777 work (do not set 777 on "live" server!)
+Creating Virtual Host work.com
+
+sudo gedit /etc/apache2/sites-available/work.com.conf
+and paste this inside that document
+
+#/etc/apache2/sites-available/work.com.conf contains following lines
+<VirtualHost *:80>
+        ServerName work.com
+        DocumentRoot /var/www/html/work/public
+
+        <Directory /var/www/html/work/public>
+            AllowOverride All
+            Require all granted
+        </Directory>
+</VirtualHost>
+enable that site
+
+sudo a2ensite work.com
+service apache2 reload
+fix hosts file so you can access it through web browser
+
+sudo gedit /etc/hosts //space between gedit and destination!
+
+        #/etc/hosts contents following lines                                
+        127.0.0.1       work.com
+or use this command
+
+sudo -- sh -c "echo '\n127.0.0.1 \twork.com'>> /etc/hosts"
+That's it laravel is installed!

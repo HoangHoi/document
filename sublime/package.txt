@@ -1,0 +1,21 @@
+Package Control
+A File Icon
+Alignment
+Boxy Theme
+BracketHighlighter
+Color Highlighter
+Colorsublime
+Emmet
+Git
+Babel
+Laravel Blade Highlighter
+PackageResourceViewer
+React ES6 Snippets
+Sass
+SublimeLinter-html-tidy
+SublimeLinter-php
+SideBarEnchancements (nomal)
+GitGutter
+Terminal
+vuejs complete package
+Jquery

@@ -1,0 +1,7 @@
+﻿# default
+ctrl + shift + mũi tên lên xuống: di chuyển hàng lên/xuống
+
+
+# emet
+ctrl + shift + y : tính biểu thức
+ctrl + mũi tên lên/xuống: tăng giảm số

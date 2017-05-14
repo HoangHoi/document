@@ -1,0 +1,2 @@
+gpasswd -a user dialout
+gpasswd -a user tty

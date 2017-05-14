@@ -1,0 +1,28 @@
+# npm
+Dowload and install nodejs
+
+# gulp
+npm install -g gulp-cli
+npm install -g gulp
+
+# set environmental
+Create an environmental variable called NODE_PATH
+Set it to: %AppData%\npm\node_modules or %AppData%\npm on windows 8-10
+
+# Path
+C:\ProgramData\Oracle\Java\javapath;
+%SystemRoot%\system32;
+%SystemRoot%;
+%SystemRoot%\System32\Wbem;
+C:\Program Files (x86)\Arduino\avr-gcc\avr47gcc18\bin;
+C:\Program Files\Git\cmd;C:\Ruby23-x64\bin;
+C:\Program Files\nodejs;
+%AppData%\npm
+
+
+# install SASS
+## Fix code converter not found (UTF-16LE to Windows-1258)
+chcp 850
+
+## Install SASS
+gem install sass

@@ -1,0 +1,36 @@
+{
+	"color_scheme": "Packages/Boxy Theme/schemes/Boxy Monokai.tmTheme",
+	"ensure_newline_at_eof_on_save": true,
+	"font_size": 14,
+	"translate_tabs_to_spaces": true,
+    "trim_automatic_white_space": true,
+    "trim_trailing_white_space_on_save": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"rulers":
+	[
+		120
+	],
+	"tab_size": 4,
+	"theme": "Boxy Monokai.sublime-theme",
+	"theme_accent_tangerine": true,
+	"theme_autocomplete_item_selected_colored": true,
+	"theme_bar_margin_top_sm": true,
+	"theme_dropdown_atomized": true,
+	"theme_find_panel_close_hidden": true,
+	"theme_icon_button_highlighted": true,
+	"theme_panel_switcher_atomized": true,
+	"theme_quick_panel_item_selected_colored": true,
+	"theme_quick_panel_size_md": true,
+	"theme_scrollbar_colored": true,
+	"theme_scrollbar_line": true,
+	"theme_sidebar_close_always_visible": true,
+	"theme_sidebar_folder_atomized": true,
+	"theme_statusbar_size_md": true,
+	"theme_tab_close_always_visible": true,
+	"theme_tab_selected_overlined": true,
+	"theme_tab_size_md": true,
+	"word_wrap": false
+}

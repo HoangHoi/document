@@ -1,3 +1,0 @@
-sudo apt-add-repository ppa:ondrej/php
-sudo apt-get update
-sudo apt-get install php7.0-cli php7.0-json php7.0-common libapache2-mod-php7.0 php7.0-mcrypt php7.0-mysql php-mbstring php-gettext

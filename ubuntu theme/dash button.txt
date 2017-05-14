@@ -1,0 +1,7 @@
+cd /usr/share/unity/icons/ && sudo mv launcher_bfb.png launcher_bfb.orig.png
+mogrify -resize 128 /PATH/TO/ICON
+sudo mv /PATCH/TO/ICON /usr/share/unity/icons/launcher_bfb.png
+sudo chown root:root /usr/share/unity/icons/launcher_bfb.png
+
+#restore
+cd /usr/share/unity/icons/ && sudo mv launcher_bfb.orig.png launcher_bfb.png

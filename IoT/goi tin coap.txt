@@ -1,0 +1,225 @@
+﻿+-----+---+---+---+---+----------------+--------+--------+----------+
+| No. | C | U | N | R | Name           | Format | Length | Default  |
++-----+---+---+---+---+----------------+--------+--------+----------+
+|   1 | x |   |   | x | If-Match       | opaque | 0-8    | (none)   |
+|   3 | x | x | - |   | Uri-Host       | string | 1-255  | (see     |
+|     |   |   |   |   |                |        |        | below)   |
+|   4 |   |   |   | x | ETag           | opaque | 1-8    | (none)   |
+|   5 | x |   |   |   | If-None-Match  | empty  | 0      | (none)   |
+|   7 | x | x | - |   | Uri-Port       | uint   | 0-2    | (see     |
+|     |   |   |   |   |                |        |        | below)   |
+|   8 |   |   |   | x | Location-Path  | string | 0-255  | (none)   |
+|  11 | x | x | - | x | Uri-Path       | string | 0-255  | (none)   |
+|  12 |   |   |   |   | Content-Format | uint   | 0-2    | (none)   |
+|  14 |   | x | - |   | Max-Age        | uint   | 0-4    | 60       |
+|  15 | x | x | - | x | Uri-Query      | string | 0-255  | (none)   |
+|  16 |   |   |   | x | Accept         | uint   | 0-2    | (none)   |
+|  20 |   |   |   | x | Location-Query | string | 0-255  | (none)   |
+|  35 | x | x | - |   | Proxy-Uri      | string | 1-1034 | (none)   |
+|  39 | x | x | - |   | Proxy-Scheme   | string | 1-255  | (none)   |
++-----+---+---+---+---+----------------+--------+--------+----------+
+C=Critical, U=Unsafe, N=No-Cache-Key, R=Repeatable
+
+# Phần đầu gói tin Coap
+
+------- Byte đầu tiên -----------
+0b01010000 : Version : 1 (01), Type  : Non-Confirmable (01), Option Count : 0 (0000)
+
+Type:
+    00 Confirmable
+    01 Non-Confirmable
+    10 Ạcknowledgement
+
+------- Byte thứ 2 --------------
+
+Nếu là gói tin request
+    +------+--------+-----------+
+    | Code | Name   | Reference |
+    +------+--------+-----------+
+    |    1 | GET    | [RFCXXXX] |
+    |    2 | POST   | [RFCXXXX] |
+    |    3 | PUT    | [RFCXXXX] |
+    |    4 | DELETE | [RFCXXXX] |
+    +------+--------+-----------+
+    
+    VD: 0b00000011 : Method put
+
+Nếu là gói tin response
+
+    +------+---------------------------------+-----------+
+    | Code | Description                     | Reference |
+    +------+---------------------------------+-----------+
+    |   65 | 2.01 Created                    | [RFCXXXX] |
+    |   66 | 2.02 Deleted                    | [RFCXXXX] |
+    |   67 | 2.03 Valid                      | [RFCXXXX] |
+    |   68 | 2.04 Changed                    | [RFCXXXX] |
+    |   69 | 2.05 Content                    | [RFCXXXX] |
+    |  128 | 4.00 Bad Request                | [RFCXXXX] |
+    |  129 | 4.01 Unauthorized               | [RFCXXXX] |
+    |  130 | 4.02 Bad Option                 | [RFCXXXX] |
+    |  131 | 4.03 Forbidden                  | [RFCXXXX] |
+    |  132 | 4.04 Not Found                  | [RFCXXXX] |
+    |  133 | 4.05 Method Not Allowed         | [RFCXXXX] |
+    |  134 | 4.06 Not Acceptable             | [RFCXXXX] |
+    |  140 | 4.12 Precondition Failed        | [RFCXXXX] |
+    |  141 | 4.13 Request Entity Too Large   | [RFCXXXX] |
+    |  143 | 4.15 Unsupported Content-Format | [RFCXXXX] |
+    |  160 | 5.00 Internal Server Error      | [RFCXXXX] |
+    |  161 | 5.01 Not Implemented            | [RFCXXXX] |
+    |  162 | 5.02 Bad Gateway                | [RFCXXXX] |
+    |  163 | 5.03 Service Unavailable        | [RFCXXXX] |
+    |  164 | 5.04 Gateway Timeout            | [RFCXXXX] |
+    |  165 | 5.05 Proxying Not Supported     | [RFCXXXX] |
+    +------+---------------------------------+-----------+
+    VD: 0x85 : 4.05 Method Not Allowed
+---------------------------------
+2 byte tiếp theo là transactionId
+
+======================================================================================================================================================
+# Goi tin get
+# 1 uri path
+
+# URI rỗng, query rỗng
+d1 0a 02
+=> Kí tự code sẽ là 0xd0.
+=> Chiều dài là 1.
+=> Kết thúc là 0x0a và 0x02
+
+?a=b
+        a   =   b
+d3  02  61  3d  62  81  02
+=> nếu đằng sau có query thì sau code, length sẽ là 0x02
+=> kí tự kết thúc là 0x81 0x02
+
+test
+   t  e  s  t
+b4 74 65 73 74 c1 02
+
+shutdown
+   s  h  u  t  d  o  w  n
+b8 73 68 75 74 64 6f 77 6e c1 02
+
+validate
+   v  a  l  i  d  a  t  e
+b8 76 61 6c 69 64 61 74 65 c1 02
+
+location-query
+        l   o   c   a   t   i   o   n   -   q   u   e   r   y
+bd  01  6c  6f  63  61  74  69  6f  6e  2d  71  75  65  72  79  c1  02
+
+=> chữ b đầu tiên là No. của Uri-Path (0xb = 11) trong bảng trên
+=> số sau chữ b là độ dài đoạn Uri-Path. Nếu độ dài mà lớn hơn 13 thì số này sẽ là d và xuất hiện thêm 1 số 8 bit nữa.
+=> số 01 là độ dài vượt quá 13 của đoạn path (14 - 13 = 01).
+=> kết thúc uri là 2 kí tự 0xc1 và 0x02
+
+# 2 uri path
+testdoanpathdai/thempath
+        t   e   s   t   d   o   a   n   p   a   t   h   d   a   i       t   h   e   m   p   a   t   h
+bd  02  74  65  73  74  64  6f  61  6e  70  61  74  68  64  61  69  08  74  68  65  6d  70  61  74  68  c1  02
+
+testdoanpathdai/thempathdaioiladai
+        t   e   s   t   d   o   a   n   p   a   t   h   d   a   i           t   h   e   m   p   a   t   h   d   a   i   o   i   l   a   d   a   i
+bd  02  74  65  73  74  64  6f  61  6e  70  61  74  68  64  61  69  0d  05  74  68  65  6d  70  61  74  68  64  61  69  6f  69  6c  61  64  61  69  c1  02
+
+testdoanpathdai/thempathdaioiladai/thempaththu3cungdai
+        t   e   s   t   d   o   a   n   p   a   t   h   d   a   i           t   h   e   m   p   a   t  h   d   a   i   o   i   l   a   d   a   i            t   h   e   m   p   a   t   h   t   h   u   3   c   u   n   g   d   a   i
+bd  02  74  65  73  74  64  6f  61  6e  70  61  74  68  64  61  69  0d  05  74  68  65  6d  70  61  74  68  64  61  69  6f  69  6c  61  64  61  69  0d  06  74  68  65  6d  70  61  74  68  74  68  75  33  63  75  6e  67  64  61  69  c1  02
+
+=> nếu có nhiều path thì path sau được thêm ngay sau path trước.
+=> trước path sau cũng có chiều dài của path.
+=> nếu path quá dài thì chiều dài sẽ là 0x0d và thêm 1 số nữa biểu thị độ dài hơn 13 kí tự (giống path thứ nhất)
+
+# uri path có param
+testpath?a=b&b=c
+    t   e   s   t   p   a   t   h       a   =   b       b   =   c
+b8  74  65  73  74  70  61  74  68  43  61  3d  62  03  62  3d  63  81  02
+=> nếu có query trên path thì query đầu tiên sẽ đứng sau 0x43 (số 3 là chiều dài của đoạn query)
+
+testpath?a=bcd&b=cdedddddddddddd&ffff=abcse
+    t   e   s   t   p   a   t   h       a   =   b   c   d           b   =   c   d   e   d   d   d   d   d   d   d   d   d   d   d   d       f   f   f   f   =   a   b   c   s   e
+b8  74  65  73  74  70  61  74  68  45  61  3d  62  63  64  0d  04  62  3d  63  64  65  64  64  64  64  64  64  64  64  64  64  64  64  0a  66  66  66  66  3d  61  62  63  73  65  81  02
+=> nếu có nhiều query thì các query sau sẽ đứng liền nhau và trước mỗi query đều có byte tính độ dài. Vẫn theo quy tắc như cách tính độ dài của path.
+=> query đầu tiên sẽ có số 0x4.. (chỗ .. là độ dài). Query sau sẽ là 0x0.. (số 4 là No. của query - No. của path = 15 - 11)
+=> query nào mà có nhiều hơn 13 kí tự thì sẽ được thêm 0x0d ở đầu, tiếp theo là số kí tự đã vượt quá 13.
+=> kết thúc là 0x81 0x02
+
+testpath/path2?a=bcd&b=cded&ff=ab
+    t   e   s   t   p   a   t   h       p   a   t   h   2       a   =   b   c   d   &   b   =   c   d   e   d   &   f   f   =   a   b
+b8  74  65  73  74  70  61  74  68  05  70  61  74  68  32  45  61  3d  62  63  64  06  62  3d  63  64  65  64  05  66  66  3d  61  62  81  02
+
+
+====================================================================================================================================================
+# Goi tin post
+
+    t   e   s   t       a   =   b   &   b   =   c
+b4  74  65  73  74  ff  61  3d  62  26  62  3d  63
+=> kết thúc không có kí tự đặc biệt nào
+
+testpath/path2?a=bcd&b=cded&ff=ab
+    t   e   s   t   p   a   t   h       p   a   t   h   2       a   =   b   c   d       b   =   c   d   e   d       f   f   =   a   b
+b8  74  65  73  74  70  61  74  68  05  70  61  74  68  32  45  61  3d  62  63  64  06  62  3d  63  64  65  64  05  66  66  3d  61  62  ff  6f  6f  6f  3d  67  67  67
+
+=> các thành phần trên uri được mã hóa tương tự get
+=> gói tin post chỉ có thêm sự khác biệt là có thêm payload
+=> trước payload là 0xff
+=> kết thúc payload không có thêm kí tự nào
+
+# uri không có path
+uri: ?bac=io     payload: abcas
+        b   a   c   =   i   o       a   b   c   a   s
+d6  02  62  61  63  3d  69  6f  ff  61  62  63  61  73
+=> Nếu không có path thì sau code, length của query đầu tiên sẽ là 0x02
+=> kí tự code là 0xd0
+
+?bac=io&bac=io      payload: avxvds
+        b   a   c   =   i   o       b   a   c   =   i   o       a   v   x   v   d   s
+d6  02  62  61  63  3d  69  6f  06  62  61  63  3d  69  6f  ff  61  76  78  76  64  73
+=> các thành phần sau vẫn mã hóa như trên
+
+# uri không có cả path và query
+
+        payload: avxvds
+    a   v   x   v   d   s
+ff  61  76  78  76  64  73
+=> Không có cả 2 phần trước thì chỉ có 0xff và payload
+
+Gói tin post, put và delete giống nhau
+
+Chú ý:
+- Nếu có kí tự đặc biệt trong path hoặc trong payload thì sẽ được mã hóa phần trăm
+
+
+Kết luận:
+- Gói tin Coap có thể chia làm 5 thành phần như sau:
++ header chứa version, type, method, id
++ phần mã hóa path
++ phần mã hóa query
++ phần mã hóa payload
++ phần footer (chỉ có trong gói tin GET)
+
+- Quy tắc mã hóa path và query
++ byte thứ nhất là (mã code) | (độ dài nếu độ dài nhỏ hơn 13, 0x0d nếu độ dài lớn hơn 13)
++ mã code của phần tử đầu tiên được quy định như sau:
+    \ Nếu đó là path thì sẽ là 0xb0 (chữ "b" chính là giá trị số 11 ở cái bảng trên cùng)
+    \ Nếu là query thì sẽ là 0x40 (số "4" là 15 trừ đi 11. Xem bảng trên cùng)
+    \ Nếu không có path thì là 0xd0. Mã này sẽ thay luôn code của query nếu có query. Và byte thứ 2 sẽ là 0x02
++ mã code của các phần tử thứ 2 trở đi là 0x00
++ cách tính độ dài:
+    \ Khi độ dài nhỏ hơn hoặc bằng 13 thì độ dài sẽ được gộp vào mã code để vào byte đầu của phần tử
+    \ Khi độ dài lớn hơn 13 thì byte đầu sẽ gộp với 0x0d và sẽ thêm 1 byte nữa biểu thị độ lớn hơn 13 (tức là độ dài trừ 13)
++ tiếp theo đó là nội dung của path hoặc query
+
+- Trước phần payload là 0xff. Tiếp theo đó là nội dung payload
+
+- Phần footer (chỉ có trong gói tin GET)
++ Byte đầu tiên là:
+    \ 0xc1 nếu chỉ có path mà không có query
+    \ 0x81 nếu có query
+    \ 0x0a nếu không có cả path và query
++ Byte kết thúc là 0x02
+
+- Gói tin đặc biệt
++ Gói tin post chỉ có payload: phần thân là 0xff + payload
++ Gói tin GET không có thành phần nào phần thân sẽ là: d1 0a 02. Các gói tin còn lại phần thân sẽ trống.
+
+- Các gói tin put, post, delete là giống nhau. Chỉ khác nhau mã method

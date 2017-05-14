@@ -1,0 +1,18 @@
+﻿You can create a section [color] in your ~/.gitconfig with e.g. the following content
+
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  ui = true
+  pager = true
+You can also fine control what you want to have coloured in what way, e.g.
+
+[color "status"]
+  added = green
+  changed = red bold
+  untracked = magenta bold
+
+[color "branch"]
+  remote = yellow

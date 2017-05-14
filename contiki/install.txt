@@ -1,0 +1,69 @@
+ sudo apt-get install build-essential binutils-msp430 gcc-msp430 msp430-libc msp430mcu mspdebug gcc-arm-none-eabi gdb-arm-none-eabi openjdk-8-jdk openjdk-8-jre ant libncurses5-dev 
+ 
+ //setup wireshark
+sudo apt-get install wireshark
+//starting wireshark will not show the wifi or ethernet interfaces
+sudo groupadd wireshark
+sudo usermod -a -G wireshark vinob
+sudo chgrp wireshark /usr/bin/dumpcap
+sudo chmod 750 /usr/bin/dumpcap
+sudo setcap cap_net_raw,cap_net_admin=eip /usr/bin/dumpcap
+sudo getcap /usr/bin/dumpcap
+ctrl+alt+del
+
+
+//wget https://github.com/contiki-os/contiki/archive/3.0.zip
+//unzip 3.0.zip
+//mv contiki-3.0/ contiki3
+
+//get contiki
+git clone https://github.com/contiki-os/contiki
+
+sudo apt-get update
+sudo apt-get install build-essential binutils-msp430 gcc-msp430 msp430-libc
+msp430mcu mspdebug binutils-avr gcc-avr gdb-avr avr-libc avrdude ant
+libncurses5-dev git doxygen
+//do the foll. two steps if u get a lock problem
+sudo rm /var/lib/apt/lists/lock
+sudo rm /var/cache/apt/archives/lock
+//do the below two for "dpkg was interrupted error"
+cd /var/lib/dpkg/updates
+sudo rm *
+
+//remove any existing open-jdks
+sudo apt-get purge openjdk*
+sudo apt-get autoremove openjdk-7-jre
+
+//install jdk8
+sudo add-apt-repository ppa:openjdk-r/ppa
+sudo apt-get update
+sudo apt-get install openjdk-8-jdk
+sudo apt-get install openjdk-8-jre
+
+//for permission
+ls -l /dev/ttyUSB0
+.............root dialout
+id -Gn
+sudo adduser user dialout
+logout and login
+
+
+//hello-world
+/examples/hello-world
+make TARGET=native hello-world
+./hello-world.native
+Contiki 3.0 started with IPV6, RPL
+Rime started with address 1.2.3.4.5.6.7.8
+MAC nullmac RDC nullrdc NETWORK sicslowpan
+Tentative link-local IPv6 address fe80:0000:0000:0000:0302:0506:0708
+Hello, world
+
+
+
+//required on contiki3(only standalone: for make login): sudo apt-get
+install lib32z1 (required for running/login)
+//required on contiki3(instant and standalone): (revert the
+serialdump-linux to the previous version)
+make TARGET=sky sky-motelist
+make TARGET=sky hello-world.upload
+make TARGET=sky login
