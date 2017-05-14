@@ -47,6 +47,19 @@ sudo mkdir /var/lib/redis
 sudo chown redis:redis /var/lib/redis
 sudo chmod 770 /var/lib/redis
 
+# fix error
+sudo nano /etc/sysctl.conf
+# add line
+#---------------------------------------------
+vm.overcommit_memory = 1
+#---------------------------------------------
+
+sudo nano /etc/rc.local
+#-----------------------------------------------------------
+sysctl -w net.core.somaxconn=65535
+echo never > /sys/kernel/mm/transparent_hugepage/enabled
+#-----------------------------------------------------------
+
 #start and check status
 sudo systemctl start redis
 sudo systemctl status redis
