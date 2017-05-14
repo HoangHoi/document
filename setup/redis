@@ -10,6 +10,7 @@ make test
 sudo make install
 
 #config
+sudo mkdir /etc/redis
 sudo cp redis.conf /etc/redis
 
 sudo gedit /etc/redis/redis.conf
