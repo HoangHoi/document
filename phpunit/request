@@ -1,0 +1,11 @@
+#set Auth
+$this->actingAs($user, $guard);
+
+#get Request
+$this->get($this->getBaseUrl() . '/logs');
+
+#post Request
+$this->post($this->getBaseUrl() . '/dashboard/search', ['quickSearch' => $this->lesson['content']]);
+
+
+#see 

@@ -1,0 +1,4 @@
+->notSeeInDatabase($table, array $data)
+->missingFromDatabase($table, array $data)
+->seeInDatabase($table, array $data)
+

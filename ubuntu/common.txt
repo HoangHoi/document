@@ -1,0 +1,13 @@
+# add user
+sudo useradd -d /home/deploy -m deploy -p
+sudo passwd testuser
+
+# remove user
+sudo userdel -r
+
+# add sudo group
+sudo usermod -a -G sudo hdusername
+
+# other user error chsh
+sudo chsh -s /bin/bash deploy
+

@@ -1,0 +1,5 @@
+# change line 2895
+-   extract(unpack('Nlength', $this->_string_shift($payload)));
++   extract(unpack('Nlength', $this->_string_shift($payload, 4)));
+
+

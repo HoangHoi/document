@@ -1,0 +1,17 @@
+#get data response
+$response = $this->get($this->getBaseUrl() . '/logs');
+dd($response->response->getData());
+dd($response->response->content());
+dd($response->response->original);
+
+#response ok (200)
+$this->assertResponseOk()
+
+#response is json
+$this->isJson();
+
+#see json struct
+$crawler->seeJsonStructure([
+            'course' => ['id', 'name', 'university_id', 'grade_id', 'started_at', 'ended_at', 'official'],
+            'message',
+        ]);
