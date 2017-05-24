@@ -1,0 +1,14 @@
+# install
+https://developer.android.com/studio/install.html
+
+# uninstall
+Delete the android-studio folder;
+Delete the sdk folder if it is in not inside the android-studio directory;
+Delete ~/.AndroidStudio, which contains config and system;
+Delete ~/.android;
+Delete ~/.local/share/applications/jetbrains-android-studio.desktop, if you created a shortcut using Configure->Create Desktop Entry.
+Note: Add on to step#5 above - Sometimes the icon launcher can be in one of the following locations to:
+
+/usr/share/applications
+/usr/local/share/applications
+
