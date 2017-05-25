@@ -1,0 +1,2 @@
+# run app gnome-calculator background
+setsid gnome-calculator
