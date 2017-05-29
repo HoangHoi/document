@@ -1,0 +1,29 @@
+# find network interface
+ip addr
+
+# enable eth0
+sudo ip link set dev eth0 up
+
+# disable eth0
+sudo ip link set dev eth0 dow
+
+# dhcp
+sudo dhclient eth0
+
+# config interfaces
+sudo nano /etc/network/interfaces
+
+------------------------------------------
+## To configure a dynamic IP address
+auto eth0
+iface eth0 inet dhcp
+
+## Or configure a static IP
+auto eth0
+iface eth0 inet static
+  address 192.168.1.14
+  gateway 192.168.1.1
+  netmask 255.255.255.0
+  network 192.168.1.0
+  broadcast 192.168.1.255
+-------------------------------------------
