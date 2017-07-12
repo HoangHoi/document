@@ -1,0 +1,4 @@
+  "scripts": {
+    "start": "node server.js",
+    "install": "npm run production"
+  },

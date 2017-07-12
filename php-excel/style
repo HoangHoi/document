@@ -1,0 +1,60 @@
+
+#============ Set style ===============
+$this->sheet
+    ->getStyle('A1:A2')
+    ->applyFromArray([
+        'fill' => [
+            'type' => 'solid',
+            'color' => ['rgb' => 'FFA900'],
+        ],
+        'font' => [
+            'color' => ['rgb' => 'FFFFFF'],
+            'size' => 11,
+            'family' => 'Calibri',
+        ],
+        'borders' => [
+            'inside' => [
+                'style' => \PHPExcel_Style_Border::BORDER_THIN,
+                'color' => ['rgb' => 'FFA900'],
+            ],
+            'outline' => [
+                'style' => \PHPExcel_Style_Border::BORDER_MEDIUM,
+            ],
+            'allborders' => ['style' => 'thin'],
+            
+        ],
+        'alignment' => [
+            'wrap' => true,
+            'vertical' => 'center',
+            'horizontal' => 'center',
+        ],
+    ]);
+    
+
+#========= Set width ============ 
+$sheet->setWidth([
+    'A' => self::COLUMN_WIDTH * 0.7,
+    'B' => self::COLUMN_WIDTH * 0.7,
+    'C' => self::COLUMN_WIDTH,
+    'D' => self::COLUMN_WIDTH,
+    'E' => self::COLUMN_WIDTH,
+    'F' => self::COLUMN_WIDTH * 4,
+    'G' => self::COLUMN_WIDTH * 1.3,
+]);
+
+
+#========= Set row height =========
+$sheet->getRowDimension(1)->setRowHeight(self::ROW_HEIGHT * 1.5);
+for ($i = 3; $i < 42; $i++) {
+    $sheet->getRowDimension($i)->setRowHeight(self::ROW_HEIGHT + self::ROW_HEIGHT_PADDING);
+}
+
+#========== Style cell ============
+$sheet->cells("E{$row}", function ($sCells) {
+    $sCells->setValue(count($this->data['lessons']));
+    $sCells->setAlignment('center');
+    $sCells->setValignment('center');
+    $sCells->setBackground('#e2efda');
+    $sCells->setBorder('thin', 'thin', 'thin', 'thin');
+});
+
