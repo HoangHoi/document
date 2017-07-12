@@ -1,0 +1,2 @@
+# response unicode
+return response()->json($data, $status, $headers, JSON_UNESCAPED_UNICODE);

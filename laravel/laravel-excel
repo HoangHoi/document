@@ -1,0 +1,4 @@
+#generate config
+php artisan vendor:publish
+# enable caculate
+        'calculate'                   => true,

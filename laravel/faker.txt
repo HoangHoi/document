@@ -1,0 +1,6 @@
+# create faker
+$faker = Faker\Factory::create();
+$faker->name;
+$faker->unique()->email;
+$faker->regexify('[A-Z0-9]{6,10}');
+

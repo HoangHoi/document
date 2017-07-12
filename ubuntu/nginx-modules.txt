@@ -1,0 +1,30 @@
+# install nginx
+sudo apt-get install nginx
+
+# Install dpkg-dev
+sudo apt-get install dpkg-dev
+
+# Add repository
+sudo add-apt-repository ppa:nginx/stable
+
+# Remove #
+sudo nano /etc/apt/sources.list.d/nginx-ubuntu-stable-xenial.list
+
+sudo apt-get update
+
+apt-get source nginx
+
+sudo apt-get build-dep nginx
+
+cd nginx-1.12.0 
+
+dpkg-buildpackage -b
+
+ cd ..
+ 
+ sudo dpkg -i nginx-common_1.12.0-1+xenial1_all.deb
+ 
+ sudo dpkg -i nginx-full_1.12.0-1+xenial1_amd64.deb
+ 
+ apt-get -f install
+ 
