@@ -1,0 +1,3 @@
+# Copy from server to local via ssh
+scp -i key_file.pem your_username@remotehost.edu:/remote/dir/foobar.txt /local/dir
+
