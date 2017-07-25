@@ -1,0 +1,5 @@
+# disable
+powercfg -h off
+
+# enable
+powercfg -h on
