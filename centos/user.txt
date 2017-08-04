@@ -18,4 +18,8 @@ mynewuser ALL=(ALL) ALL
 # switch user
 su - username
 
+# 'su - username' not work, not error
+nano /etc/passwd
+
+--> change bin/false to bin/bash
 

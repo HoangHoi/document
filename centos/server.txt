@@ -1,0 +1,4 @@
+# change php version build in direactAdmin
+cd /usr/local/bin
+ln -s /usr/local/php71/bin/php71 php
+
