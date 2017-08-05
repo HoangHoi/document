@@ -1,0 +1,34 @@
+# Install Java
+
+yum -y update
+wget --no-cookies --no-check-certificate --header "Cookie:oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.rpm"
+yum -y localinstall jdk-8u131-linux-x64.rpm
+java -version
+echo $JAVA_HOME
+
+nano ~/.bashrc
+# add 2 line
+#----------------------------------------
+export JAVA_HOME=/usr/java/jdk1.8.0_131/
+export JRE_HOME=/usr/java/jdk1.8.0_131/jre
+#----------------------------------------
+
+echo $JAVA_HOME
+
+nano /etc/yum.repos.d/cassandra.repo
+#-----add-------------------------------
+[cassandra]
+name=Apache Cassandra
+baseurl=https://www.apache.org/dist/cassandra/redhat/311x/
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://www.apache.org/dist/cassandra/KEYS
+#---------------------------------------
+
+yum -y install cassandra
+systemctl daemon-reload
+systemctl start cassandra
+systemctl enable cassandra
+nodetool status
+cqlsh
+

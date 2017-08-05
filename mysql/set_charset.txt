@@ -1,3 +1,8 @@
+
+# show charset
+SHOW CHARACTER SET;
+
+
 # Set charset database, table
 
 ALTER DATABASE databasename CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

@@ -1,0 +1,7 @@
+# Show all keyspace
+DESCRIBE keyspaces;
+
+# Use keyspace
+USE <keyspace_name>
+
+
