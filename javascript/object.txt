@@ -1,0 +1,2 @@
+# check empty object
+Object.keys(errorInput).length === 0 && errorInput.constructor === Object
