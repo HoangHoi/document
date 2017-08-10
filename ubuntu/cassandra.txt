@@ -1,0 +1,22 @@
+# install java
+
+#install cassandra
+echo "deb http://www.apache.org/dist/cassandra/debian 311x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.list
+gpg --keyserver pgp.mit.edu --recv-keys A278B781FE4B2BDA
+gpg --export --armor A278B781FE4B2BDA | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install cassandra
+sudo service cassandra start
+sudo service cassandra stop
+sudo service cassandra status
+sudo nodetool status
+cqlsh
+
+# Error
+# Connection error: ('Unable to connect to any servers', {'127.0.0.1': TypeError('ref() does not take keyword arguments',)})
+
+sudo apt install python-pip
+pip install cassandra-driver
+export CQLSH_NO_BUNDLED=true
+
+# Cassandra’s configuration files are found in /etc/cassandra, log and data are stored in /var/log/cassandra/ and /var/lib/cassandra respectively.

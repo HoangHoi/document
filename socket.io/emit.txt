@@ -1,0 +1,2 @@
+io.sockets.emit will send to all the clients
+socket.broadcast.emit will send the message to all the other clients except the newly created connection

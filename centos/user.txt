@@ -1,0 +1,25 @@
+# add user
+adduser username
+
+# change password
+passwd username
+
+# add sudo
+usermod -aG wheel username
+
+visudo
+
+# ----------------------------------
+## Allow root to run any commands anywhere
+root ALL=(ALL) ALL
+mynewuser ALL=(ALL) ALL
+# ----------------------------------
+
+# switch user
+su - username
+
+# 'su - username' not work, not error
+nano /etc/passwd
+
+--> change bin/false to bin/bash
+

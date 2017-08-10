@@ -1,5 +1,11 @@
+# List users
+cut -d: -f1 /etc/passwd
+
 # add user
-sudo useradd -d /home/deploy -m deploy -p
+sudo adduser conghoan
+
+# add user
+# sudo useradd -d /home/deploy -m deploy -p
 sudo passwd testuser
 
 # remove user
@@ -11,3 +17,5 @@ sudo usermod -a -G sudo hdusername
 # other user error chsh
 sudo chsh -s /bin/bash deploy
 
+# To change the shell for a user:
+sudo chsh username

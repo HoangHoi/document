@@ -1,0 +1,14 @@
+# Yum repo
+
+
+# command
+yum repolist
+yum install <package name/s>
+yum update <package name/s>
+yum check-update
+yum remove <package name/s>
+yum provides <file name>
+yum search <keyword>
+yum localinstall <absolute path to package name/s>
+
+

@@ -1,0 +1,29 @@
+
+# show charset
+SHOW CHARACTER SET;
+
+
+# Set charset database, table
+
+ALTER DATABASE databasename CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER TABLE tablename CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+ALTER DATABASE databasename CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+ALTER TABLE tablename CONVERT TO CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+# set default charset
+# edit file /etc/my.cnf
+#--------------------------
+[client]
+default-character-set=utf8
+
+[mysql]
+default-character-set=utf8
+
+
+[mysqld]
+collation-server = utf8_unicode_ci
+init-connect='SET NAMES utf8'
+character-set-server = utf8
+#--------------------------
+

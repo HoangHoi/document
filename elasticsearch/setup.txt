@@ -18,3 +18,6 @@ sudo systemctl start elasticsearch
 #auto start
 sudo update-rc.d elasticsearch defaults 95 10
 
+# add variable file .bashrc
+export ES_HOME=/usr/share/elasticsearch
+
