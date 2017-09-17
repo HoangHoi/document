@@ -1,0 +1,8 @@
+# config
+cd /usr/local/directadmin/data/templates/custom
+cp ../nginx_*.conf .
+
+# build
+cd /usr/local/directadmin/custombuild
+./build rewrite_confs
+
