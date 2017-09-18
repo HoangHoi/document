@@ -1,0 +1,6 @@
+Domain setup -> change php version
+
+# rebuid
+cd /usr/local/directadmin/custombuild
+./build rewrite_confs
+
