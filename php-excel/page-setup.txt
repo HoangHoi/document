@@ -1,0 +1,45 @@
+Orientation and Paper Size:
+
+$objPHPExcel->getActiveSheet()
+    ->getPageSetup()
+    ->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);
+$objPHPExcel->getActiveSheet()
+    ->getPageSetup()
+    ->setPaperSize(PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4);
+Page margins:
+
+$objPHPExcel->getActiveSheet()
+    ->getPageMargins()->setTop(1);
+$objPHPExcel->getActiveSheet()
+    ->getPageMargins()->setRight(0.75);
+$objPHPExcel->getActiveSheet()
+    ->getPageMargins()->setLeft(0.75);
+$objPHPExcel->getActiveSheet()
+    ->getPageMargins()->setBottom(1);
+Headers and Footers:
+
+$objPHPExcel->getActiveSheet()
+    ->getHeaderFooter()
+    ->setOddHeader('&C&HPlease treat this document as confidential!');
+$objPHPExcel->getActiveSheet()
+    ->getHeaderFooter()
+    ->setOddFooter('&L&B' . $objPHPExcel->getProperties()->getTitle() . 
+Printer page breaks:
+
+$objPHPExcel->getActiveSheet()
+    ->setBreak( 'A10' , PHPExcel_Worksheet::BREAK_ROW );
+Showing grid lines:
+
+$objPHPExcel->getActiveSheet()
+    ->setShowGridlines(true);
+Setting rows/columns to repeat at the top/left of each page
+
+$objPHPExcel->getActiveSheet()
+    ->getPageSetup()
+    ->setRowsToRepeatAtTopByStartAndEnd(1, 5);
+Setting the print area:
+
+$objPHPExcel->getActiveSheet()
+    ->getPageSetup()
+    ->setPrintArea('A1:E5,G4:M20');
+
