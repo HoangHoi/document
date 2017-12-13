@@ -27,3 +27,9 @@ iface eth0 inet static
   network 192.168.1.0
   broadcast 192.168.1.255
 -------------------------------------------
+
+# You can use this command to have a full detail :
+sudo netstat -peanut
+# if you need to know exactly which one is listening on port 8000 you can use this :
+sudo netstat -peanut | grep ":8000 "
+
