@@ -6,3 +6,6 @@ sudo apt-get install php7.0-cli php7.0-json php7.0-common libapache2-mod-php7.0 
 sudo add-apt-repository ppa:ondrej/apache2
 sudo apt-get update
 sudo apt-get install libapache2-mod-php7.0
+
+
+sudo apt-get install php7.1-cli php7.1-json php7.1-common libapache2-mod-php7.1 php7.1-mcrypt php7.1-mysql php7.1-mbstring php7.1-xml zip unzip php7.1-zip php-gettext php7.1-gd
