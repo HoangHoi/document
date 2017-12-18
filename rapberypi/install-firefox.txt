@@ -1,0 +1,7 @@
+You can also use apt from the terminal with something like:
+
+sudo apt-get install firefox=45.0.2+build1-0ubuntu1 (You can install other versions like this, you just have to get the build name exacly right)
+
+Lock the version with
+
+sudo apt-mark hold firefox
