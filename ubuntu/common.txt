@@ -19,3 +19,7 @@ sudo chsh -s /bin/bash deploy
 
 # To change the shell for a user:
 sudo chsh username
+
+#Lock the version with
+
+sudo apt-mark hold firefox
