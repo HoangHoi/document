@@ -1,0 +1,2 @@
+# Too many Authentication Failures
+ssh -o PubkeyAuthentication=no root@host
