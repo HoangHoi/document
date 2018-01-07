@@ -1,0 +1,12 @@
+#apache2
+sudo yum install httpd
+sudo service httpd start
+
+#mysql
+sudo yum install mysql-server
+sudo service mysqld start
+#config
+sudo /usr/bin/mysql_secure_installation
+# choose y all question
+
+

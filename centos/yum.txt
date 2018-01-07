@@ -1,5 +1,5 @@
 # Yum repo
-
+/etc/yum.repos.d
 
 # command
 yum repolist
