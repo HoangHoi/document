@@ -1,0 +1,31 @@
+https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-centos-7
+
+# vao link duoi de chon ban moi nhat
+https://dev.mysql.com/downloads/repo/yum
+
+# tai ban moi nhat ve may
+wget https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
+
+# check ma md5
+md5sum mysql57-community-release-el7-9.noarch.rpm
+
+# Install mysql
+sudo rpm -ivh mysql57-community-release-el7-9.noarch.rpm
+sudo yum install mysql-server
+
+# Start
+sudo systemctl start mysqld
+
+# xem status
+sudo systemctl status mysqld
+
+# xem mat khau mac dinh
+sudo grep 'temporary password' /var/log/mysqld.log
+
+# cai dat
+sudo mysql_secure_installation
+
+# test
+mysqladmin -u root -p version
+
+XGch9NEtFs!m
