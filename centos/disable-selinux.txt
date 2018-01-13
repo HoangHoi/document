@@ -1,0 +1,8 @@
+# DISABLE SELINUX
+vi /etc/selinux/config
+
+#change
+SELINUX=disabled 
+
+# restart
+setenforce 0

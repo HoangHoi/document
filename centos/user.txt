@@ -23,3 +23,5 @@ nano /etc/passwd
 
 --> change bin/false to bin/bash
 
+#chmod 755
+

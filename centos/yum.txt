@@ -1,5 +1,6 @@
 # Yum repo
 /etc/yum.repos.d
+# Note: add remi repo => remove web.. repo
 
 # command
 yum repolist
