@@ -1,0 +1,49 @@
+# config file
+/etc/httpd/conf/httpd.conf
+# config NameVirtualHost apache 2.2
+NameVirtualHost *:80
+NameVirtualHost *:443
+
+# config file
+<VirtualHost *:80>
+    ServerName farm.ongnhuahdpe.com
+    ServerAdmin cskh@farm.ongnhuahdpe.com
+    DocumentRoot /home/hoanghoi/www/iot-farm/public
+
+    <Directory /home/hoanghoi/www/iot-farm/public>
+       # Options FollowSymLinks
+        AllowOverride All
+       # Order allow,deny
+        Allow from all
+       # Require all granted
+    </Directory>
+    #redirect to https link
+    #RewriteEngine on
+    #RewriteCond %{SERVER_NAME} =healthcare.net.vn
+    #RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [L,NE,R=permanent]
+    ErrorLog logs/farmily_error.log
+    CustomLog logs/farmily_access.log common
+</VirtualHost>
+
+# config file with ssl
+<VirtualHost *:443>
+    ServerName healthcare.net.vn
+    ServerAdmin cskh@healthcare.net.vn
+    DocumentRoot /home/hoanghoi/www/healthcare/public
+
+    <Directory /home/hoanghoi/www/healthcare/public>
+       # Options FollowSymLinks
+        AllowOverride All
+       # Order allow,deny
+        Allow from all
+       # Require all granted
+    </Directory>
+
+    ErrorLog logs/healthcare_error.log
+    CustomLog logs/healthcare_access.log common
+    SSLCertificateFile /etc/letsencrypt/live/healthcare.net.vn/cert.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/healthcare.net.vn/privkey.pem
+    Include /etc/letsencrypt/options-ssl-apache.conf
+    SSLCertificateChainFile /etc/letsencrypt/live/healthcare.net.vn/chain.pem
+</VirtualHost>
+

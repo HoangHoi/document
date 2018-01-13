@@ -9,4 +9,8 @@ sudo service mysqld start
 sudo /usr/bin/mysql_secure_installation
 # choose y all question
 
+#install mod_ssl
+sudo yum install mod_ssl
 
+#install certbot
+https://certbot.eff.org
