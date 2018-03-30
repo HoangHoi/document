@@ -21,5 +21,3 @@ sudo a2enconf phpmyadmin.conf
 
 #load lai apache hoac khoi dong lai
 sudo systemctl reload apache2.service
-
-

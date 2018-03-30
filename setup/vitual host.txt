@@ -1,17 +1,19 @@
 apt-get update
 apt-get install apache2
 
-cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/thachpham.com.conf
+cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/fcp.lc.conf
 
 
 <VirtualHost *:80>
-        ServerName thachpham.com
-        ServerAlias www.thachpham.com
-        ServerAdmin contact@thachpham.com
+        ServerName fcp.lc
+        ServerAlias admin.fcp.lc
+        ServerAlias agent.fcp.lc
+        ServerAlias www.fcp.lc
+        ServerAdmin contact@fcp.lc
  
-        DocumentRoot /home/thachpham.com/public_html
+        DocumentRoot /home/awesome/public
  
-        <Directory /home/thachpham.com/public_html>
+        <Directory /home/awesome/public>
                 Options FollowSymLinks
                 AllowOverride All
                 Order allow,deny
@@ -25,8 +27,8 @@ cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/th
         # modules, e.g.
         LogLevel error
  
-        ErrorLog /home/thachpham.com/log/error.log
-        CustomLog /home/thachpham.com/log/access.log combined
+        # ErrorLog /home/fcp.lc/log/error.log
+        # CustomLog /home/fcp.lc/log/access.log combined
  
         # For most configuration files from conf-available/, which are
         # enabled or disabled at a global level, it is possible to
@@ -36,12 +38,10 @@ cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/th
         #Include conf-available/serve-cgi-bin.conf
 </VirtualHost>
 
-
-
-a2ensite thachpham.com
-service apache2 reload
-a2enmod rewrite
-service apache2 restart
+sudo a2ensite fcp.lc
+sudo service apache2 reload
+sudo a2enmod rewrite
+sudo service apache2 restart
 
 
 
