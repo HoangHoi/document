@@ -1,0 +1,5 @@
+# download: remote -> local
+scp user@remote_host:remote_file local_file 
+
+# upload: local -> remote
+scp local_file user@remote_host:remote_file
