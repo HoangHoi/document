@@ -3,10 +3,25 @@ sudo apt-get update
 sudo apt-get install build-essential tcl
 cd /tmp
 curl -O http://download.redis.io/redis-stable.tar.gz
-tar xzvf redis-stable.tar.gz
+# or
+wget http://download.redis.io/redis-stable.tar.gz
+
+tar xvzf redis-stable.tar.gz
+
 cd redis-stable
+
+sudo apt-get install make gcc tcl build-essential
+
+sudo apt-get update
+
+## if there is another error like "fatal error: jemalloc/jemalloc.h: No such file or directory"
+
+## just run "make distclean"
+
 make
+
 make test
+
 sudo make install
 
 #config
@@ -63,6 +78,9 @@ echo never > /sys/kernel/mm/transparent_hugepage/enabled
 #start and check status
 sudo systemctl start redis
 sudo systemctl status redis
+
+#enable auto start with OS
+sudo systemctl enable redis
 
 #test
 redis-cli

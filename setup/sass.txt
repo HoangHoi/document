@@ -22,5 +22,9 @@ jim@schubert:~$ gem -v
 1.5.2
 jim@schubert:~$ 
 
+#install ruby
+sudo apt-get install ruby
+sudo apt-get install ruby-compass
+
 # install sass
 sudo su -c "gem install sass"
