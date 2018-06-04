@@ -23,5 +23,5 @@ nano /etc/passwd
 
 --> change bin/false to bin/bash
 
-#chmod 755
-
+#chmod 755 user home directory
+chmod 755 hoanghoi 

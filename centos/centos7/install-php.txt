@@ -5,8 +5,11 @@ sudo yum install yum-utils
 
 # config
 sudo yum-config-manager --enable remi-php70
+## Hoac
+sudo yum-config-manager --enable remi-php71
+## Hoac
 sudo yum-config-manager --enable remi-php71
 
 # install php
-sudo yum install php php-mcrypt php-cli php-gd php-curl php-mysql php-ldap php-zip php-fileinfo 
+sudo yum install php php-mcrypt php-cli php-gd php-curl php-mysql php-ldap php-zip php-fileinfo php-mbstring php-xml php-dom
 
