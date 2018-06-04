@@ -1,5 +1,5 @@
 # DISABLE SELINUX
-vi /etc/selinux/config
+sudo nano /etc/selinux/config
 
 #change
 SELINUX=disabled 

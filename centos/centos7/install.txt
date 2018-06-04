@@ -1,1 +1,10 @@
- 
+# Install httpd
+sudo yum install httpd
+sudo systemctl start httpd.service
+sudo systemctl enable httpd.service
+
+# Find your Server's Public IP Address
+ip addr show eth0 | grep inet | awk '{ print $2; }' | sed 's/\/.*$//' 
+
+# Add User to group
+sudo usermod -a -G apache hoanghoi
