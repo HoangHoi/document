@@ -1,0 +1,33 @@
+# Install supervisor
+sudo yum install supervisor
+
+# Config laravel worker
+sudo nano /etc/supervisord.d/laravel-worker.conf
+#------------------------------------
+[program:laravel-worker]
+command=php /home/hoanghoi/www/vatap/artisan queue:work --sleep=3 --tries=3 --daemon
+process_name=%(program_name)s_%(process_num)02d
+numprocs=8
+autostart=true
+autorestart=true
+user=hoanghoi
+redirect_stderr=true
+stdout_logfile=/home/hoanghoi/www/vatap/worker.log
+# ===================================
+
+# Start supervisord
+sudo supervisord
+
+# To autorun at start
+sudo systemctl enable supervisord
+
+# To restart the service
+sudo systemctl restart supervisord
+
+# Update config
+sudo supervisorctl reread
+sudo supervisorctl update
+
+# Start worker
+sudo supervisorctl start laravel-worker:*
+
