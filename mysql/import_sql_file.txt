@@ -1,1 +1,6 @@
+# import
 mysql -h127.0.0.1 -uroot -p fcp < fcp.sql
+
+# export
+mysqldump -u [user] -p [db_name] | gzip > [filename_to_compress.sql.gz]
+
