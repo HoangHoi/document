@@ -1,0 +1,11 @@
+
+# File ~/.ssh/config
+
+Host garage_aws
+    HostName 123.345.643.23
+    User centos
+    Port 4022
+    IdentitiesOnly=yes 
+#    PubkeyAuthentication=no
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/key_was.pem
