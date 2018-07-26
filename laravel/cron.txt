@@ -1,0 +1,13 @@
+# Config
+sudo nano /etc/crontab
+
+---------Edit----------
+* * * * * root php /home/hoanghoi/www/vatap/artisan schedule:run >> /home/hoanghoi/log/schedule.log 2>&1
+-----------------------
+
+# Restart crontab
+sudo systemctl restart crond.service
+
+# Auto start when reboot
+chkconfig crond on
+

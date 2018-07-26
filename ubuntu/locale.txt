@@ -1,0 +1,16 @@
+# Run command
+
+sudo locale-gen vi_VN
+sudo locale-gen vi_VN.UTF-8
+
+# Edit file .zshrc
+
+export LANGUAGE=vi_VN.UTF-8
+export LANG=vi_VN.UTF-8
+export LC_ALL=vi_VN.UTF-8
+
+# Also, try regenerating the supported locale list by running:
+sudo dpkg-reconfigure locales
+
+# And update/change the current default locale:
+sudo update-locale LANG=vi_VN.UTF-8

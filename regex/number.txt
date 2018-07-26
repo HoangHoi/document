@@ -1,0 +1,4 @@
+# 09 => 9
+
+let newValue = value.replace(/\D/g, '');
+newValue = newValue.replace(/\b0+/g, '');

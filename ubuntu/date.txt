@@ -1,0 +1,6 @@
+# current date time
+date
+
+# Change Timezone
+sudo dpkg-reconfigure tzdata
+
