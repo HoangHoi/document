@@ -1,0 +1,48 @@
+# install bind
+sudo yum install bind bind-utils
+
+#----------- sudo nano /etc/named/zones/db.hoanghoi.com -------------#
+
+$TTL    3600
+@       IN      SOA     ns1.hoanghoi.com. admin.hoanghoi.com. (
+    3           ; Serial
+    3600        ; Refresh
+    86400       ; Retry
+    2419200     ; Expire
+    3600        ; Negative Cache TT
+)
+; name servers - NS records
+        IN      NS      ns1.hoanghoi.com.
+
+; name servers - A records
+ns1.hoanghoi.com.        IN      A      192.168.13.110
+
+; 10.128.0.0/16 - A records
+sv1.hoanghoi.com.        IN      A      192.168.13.101
+sv2.hoanghoi.com.        IN      A      192.168.13.102
+sv3.hoanghoi.com.        IN      A      192.168.13.103
+rd1.hoanghoi.com.        IN      A      192.168.13.120
+
+
+#------- sudo nano /etc/named/zones/db.192.168.13 -----------#
+
+$TTL    3600
+@       IN      SOA     ns1.hoanghoi.com. admin.hoanghoi.com. (
+    3           ; Serial
+    3600        ; Refresh
+    86400       ; Retry
+    2419200     ; Expire
+    3600        ; Negative Cache TTL
+)
+; name servers
+        IN      NS      ns1.hoanghoi.com.
+
+; PTR Records
+110     IN      PTR     ns1.hoanghoi.com.  ; 192.168.13.110
+101     IN      PTR     sv1.hoanghoi.com.  ; 192.168.13.101
+102     IN      PTR     sv2.hoanghoi.com.  ; 192.168.13.102
+103     IN      PTR     sv3.hoanghoi.com.  ; 192.168.13.103
+120     IN      PTR     rd1.hoanghoi.com.  ; 192.168.13.120
+
+#---------- firewall-cmd ----------------------------
+sudo firewall-cmd --permanent --add-service=dns

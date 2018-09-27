@@ -1,0 +1,72 @@
+1. Xem thông tin và liệt kê các container, image
+docker version: xem phiên bản docker
+docker info: xem thông tin chi tiết cơ bản của phiên bản docker
+docker ps: Liệt kê các container đang chạy
+docker ps -a : hiển thị các container đang chạy và đã tắt
+docker ps -s: giống docker ps tuy nhiên nó còn hiển thị thêm 1 field là dung lượng container được tạo ra
+docker images: xem các image đã cài đặt
+docker network ls: Xem các loại network đang có trong docker
+docker network rm cluster-nginx_default: Xóa một network
+docker inspect { container_id }: Xem chi tiết thông tin của container được tạo ra
+docker network inspect bridge: Xem các ip của container
+docker inspect { container_id || container_name } | grep -C2 Binds: Xem các volume trong container
+docker logs { container_id }: xem lịch sử container  
+
+2. Xóa 1 container, images:
+docker rm <id hoặc Name>:  Xóa 1 container
+docker rm –f <id hoặc Name>: Giống lệnh trên nhưng xóa được cả container đang chạy (f ó force)
+docker rm $(docker ps -a -q): xóa toàn bộ các container đang tồn tại
+docker kill <id hoặc Name>: Tắt 1 container
+docker rmi <id hoặc Name>: Xóa 1 image
+docker rmi –f <id hoặc Name>: Xóa 1 image kể cả khi đang chạy
+
+3. Bật, chạy container
+docker start <id hoặc Name>: Star 1 docker container
+docker stop <id hoặc Name> : Dừng lại container được chỉ định với id hoặc tên đang chạy
+docker stop $(docker ps –a –q): Dừng tất cả các container đang chạy
+docker exec –it <id hoặc Name> /bin/bash: start container đã bị tắt (lệnh xem container bị tắt ở trên)
+docker run --name {container_name} -p {host_port}:{container_port} -v {/host_path}:{/container_path} -it {image_name} /bin/bas
+
+   a. Tìm hiểu chi tiết lệnh docker run ...
+    - Với lệnh trên docker sẽ tạo 1 cotainer từ image có sẵn và chạy với tùy chọn cổng với volume    
+      (chú ý: mỗi lần run là tương đương với việc tạo ra 1 container).
+      Với các tùy chọn như sau.
+-v {/host_path}:{/container_path} … tạo 1 volume liên kết thưc mục (hay đại loại là share file) giữa thư mục máy thật host_path với thư mục ảo hóa container_path. Có thể chỉ định tạo nhiều volume với –v.
+-p {host_port}:{container_port}… map 1 cổng từ máy ảo (container_port) sang 1 cổng máy thật (host_port). Bạn có thể tạo nhiều map port với nhiều tham số -p giống như –v vậy. Chẳng hạn –p 8080:80 –p 8085:85 –p 8082:3000
+-P (-publish-all): export ra toàn bộ các cổng được defind trong Dockerfile hoặc defind trong môi trường image. Kiểu export này sẽ ko có chỉ định trước port như của -p
+–it chỉ định image sử dụng (nếu image ko có ẵn nó sẽ tự động pull về, câu lệnh này ó -i -t). image ko chỉ định được nhiều chỉ chỉ định được duy nhất 1 image khi tạo container.
+-i (-interactive): giữ cho stdin mở kể cả khi không attach
+-t (-tty ): Allocate a pseudo-TTY. Ý nghĩa của nó là cho phép phân bổ 1 giả lệnh tty (tty là 1 khái niệm dòng lệnh tương tự như shell command trong linux và các hệ điều hành unix khác, nó giúp ta nhập các dòng lệnh tương tác hoặc chạy 1 kịch bản ‘script’. Đích đến của nó là một chương trình hoặc máy in).
+-it hay –ti trong docker giúp ta mở cửa số dòng lệnh stdin và tạo 1 tty giả lập để cho người dùng (chính là ta) sử dụng và tương tác với môi trường docker
+-w (-workdir=””): chọn đường dẫn bắt đầu làm việc, nghĩa là khi bạn thực thi lệnh để chui vào container bằng lệnh exec ở trên hoặc attach thì nó sẽ mặc định chui vào đường dẫn mà bạn define với cờ -w
+-m (-memory=””): giới hạn dung lượng bộ nhớ chạy một container
+-d (-detach): chạy ứng dụng dưới chế độ nền. Nghĩa là khi bạn start một container với cờ này thì ứng dụng sẽ không chạy thằng vào dòng lệnh bên trong container mà nó sẽ chạy ngầm và trả lại cho bạn một container Id. Để làm việc với container mà bạn chạy dưới cờ -d thì bạn sử dụng docker attach hoặc docker exec … như ở trên đã đề cập
+-e : Thiết lập các biến môi trường cho container
+-net = “name”: Kết nối container tới mạng network chỉ định của docker (Để xem các mạng chỉ định mà docker có sẵn bạn gõ docker network ls). Mặc định khi bạn không chạy với cờ này thì docker sẽ tự động assign một mạng network cho cotainer mà bạn tạo.  (Để xem cotainer mà bạn tạo thuộc mạng nào, bạn sử dụng lệnh docker inspect container_id ở trên và xem chi tiết trong này sẽ thây network mà docker đã assign tự động cho cotainer bạn tạo)
+exit: thoát khoải môi trường ảo container đang chạy
+Ctrl + P sau đó Ctrl + Q : deatch khỏi cửa sổ thực thi trong cotainer, nó khác exit là nó không thoát hoàn toàn ứng dụng mà các ứng dụng bạn đang chạy vẫn chạy bình thường
+docker attach { container_id }: chui lại vào container bạn vừa detach, (chú ý: phải gõ enter 2 lần)
+
+4. Thao tác quản lý phiên bản
+docker history { image_name || id } – xem lịch sử các commit trên image (trong đó image_name = ‘REPOSITORY’ + ‘TAG’)
+docker diff { container_name || id }: Xem các thay đổi trên container
+docker pull < image_name > : pull 1 docker image mới về, chú ý lấy các docker image này trên docker hub
+docker tag { image_id } { image_new_name }: { tag } :Thay đổi tag và image_name (trong window nó là cột REPOSITORY) cho image tồn tại trong hệ thống. Đây cũng có thể coi là đổi tên image
+docker rename docker-curent-name docker-new-name : đổi tên container
+docker search { name_image }: tìm kiếm image trên hub docker
+docker commit [option] { image_id } { image_name }: { tag }: commit thay đổi lên images. Khi thực hiện với lệnh này nó sẽ tạo ra 1 image mới với 1 số thông tin với option là
+--author, -a: author
+--change, -c : áp dụng hướng dẫn docker file tới image đã tạo
+--message, -m: chú thích
+--pause, -p (default = true): Tạm dừng container sau khi commit
+docker build -t="{ username_docker_hub/image_name:version }" .  : xây dựng lên 1 bản image từ Dockerfile (là 1 file cấu hình docker mình sẽ đề cập nó trong bài kế tiếp). Chú ý, dấu chấm “.” ở cuối đoạn lệnh ko thể quên nhé… vì ở đây nó coi Dockerfile là file ở ngay đường dẫn thực hiện lệnh build
+docker build –pull –t …. : Giống như docker build –t nhưng nó sẽ đảm bảo image bạn build lựa chọn theo sẽ được cập nhật mới nhất
+
+5. Thao tác lưu trữ, tích hợp container, image
+Image
+docker save { image_name } > { host_path/new_image.taz  }: lưu trữ image thành file .taz
+docker import { host_path_file }  { image_name }: { tag }: import file image.taz từ local và đặt tên cho nó, sử dụng với windows
+cat { host_path_file } | sudo docker import - { image_name }: { tag }: import sử dụng với ubuntu
+Container
+docker export {container_id} > {host_path/new_container.taz }: xuất ra file container
+Để import 1 container ta vẫn dùng câu lệnh import giống như trên image: Tuy nhiên khi import container nó sẽ tự tạo ra 1 image mới chứ không phải 1 container mới. Tiếp theo bạn chạy container mới từ image tạo mới này

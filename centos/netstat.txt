@@ -1,0 +1,2 @@
+# Check listen port
+sudo netstat -plnt

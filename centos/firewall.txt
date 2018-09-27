@@ -1,3 +1,62 @@
+# reload
+sudo firewall-cmd --reload
+
+# restart
+sudo systemctl restart network
+sudo systemctl reload firewalld
+
+# get services
+sudo firewall-cmd --get-services
+
+# services directory 
+/usr/lib/firewalld/services
+/etc/firewalld/services
+
+
+# services file /usr/lib/firewalld/services/example.xml
+#--------------------------------------------------
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>Example Service</short>
+  <description>This is just an example service</description>
+  <port protocol="tcp" port="7777"/>
+  <port protocol="udp" port="8888"/>
+</service>
+#==================================================
+
+# add services
 sudo firewall-cmd --permanent --zone=public --add-service=http 
 sudo firewall-cmd --permanent --zone=public --add-service=https
-sudo firewall-cmd --reload
+
+# list services
+sudo firewall-cmd --zone=public --list-services
+
+# add port
+sudo firewall-cmd --permanent --zone=public --add-port=1313/tcp
+sudo firewall-cmd --permanent --zone=public --add-port=4990-4999/udp
+
+# list port
+sudo firewall-cmd --zone=public --list-ports
+
+#==================================================
+# create zones
+sudo firewall-cmd --permanent --new-zone=redis
+
+# add source to zone
+sudo firewall-cmd --permanent --zone=redis --add-source=client_server_private_IP
+
+# get active zones
+sudo firewall-cmd --get-active-zones
+sudo firewall-cmd --zone=home --list-all
+
+# get zones
+sudo firewall-cmd --get-zones
+sudo firewall-cmd --permanent --get-zones
+sudo firewall-cmd --list-all
+sudo firewall-cmd --list-all-zones | less
+
+# change interface
+sudo firewall-cmd --zone=home --change-interface=eth0
+
+# set default zone
+sudo firewall-cmd --set-default-zone=home
