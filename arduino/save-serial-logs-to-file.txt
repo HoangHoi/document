@@ -1,0 +1,10 @@
+minicom
+
+# install
+sudo apt-get install minicom
+
+# save serial output to file
+sudo minicom -C file.log
+
+# setting
+sudo minicom -s
