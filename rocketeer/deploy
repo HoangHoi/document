@@ -1,0 +1,3 @@
+php rocketeer.phar deploy --on=staging --no-interaction
+php rocketeer.phar deploy --on=staging --no-interaction --branch=testing
+

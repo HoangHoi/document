@@ -26,6 +26,9 @@ iface eth0 inet static
   netmask 255.255.255.0
   network 192.168.1.0
   broadcast 192.168.1.255
+  dns-nameservers 10.0.0.1 8.8.8.8
+  dns-domain acme.com
+  dns-search acme.com
 -------------------------------------------
 
 # You can use this command to have a full detail :

@@ -1,0 +1,4 @@
+chkconfig --list
+chkconfig --level 345 mysqld on
+chkconfig --level 345 mysqld off
+
