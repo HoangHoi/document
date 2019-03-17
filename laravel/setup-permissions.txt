@@ -1,0 +1,16 @@
+ 
+#1 Webserver as owner
+sudo usermod -a -G www-data your_username
+sudo chown -R www-data:www-data /path/to/your/laravel/root/directory
+sudo find /path/to/your/laravel/root/directory -type f -exec chmod 644 {} \;
+sudo find /path/to/your/laravel/root/directory -type d -exec chmod 755 {} \;
+
+#2 Your user as owner
+sudo chown -R my-user:www-data /path/to/your/laravel/root/directory
+sudo find /path/to/your/laravel/root/directory -type f -exec chmod 664 {} \;
+sudo find /path/to/your/laravel/root/directory -type d -exec chmod 775 {} \;
+
+# Then give the webserver the rights to read and write to storage and cache
+sudo chgrp -R www-data storage bootstrap/cache
+sudo chmod -R ug+rwx storage bootstrap/cache
+
