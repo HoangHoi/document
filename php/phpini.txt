@@ -1,0 +1,3 @@
+# show file locale
+php -i | grep "Loaded Configuration File"
+
