@@ -14,3 +14,9 @@ sudo find /path/to/your/laravel/root/directory -type d -exec chmod 775 {} \;
 sudo chgrp -R www-data storage bootstrap/cache
 sudo chmod -R ug+rwx storage bootstrap/cache
 
+# Set default group for user when they create new files?
+chgrp www-data /some/dir
+chmod g+s /some/dir
+
+find /some/dir -type d -exec chgrp www-data {} +
+find /some/dir -type d -exec chmod g+s {} +
