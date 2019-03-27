@@ -1,0 +1,15 @@
+sudo apt-get install libxrender1
+
+composer require h4cc/wkhtmltopdf-i386 0.12.x
+composer require h4cc/wkhtmltoimage-i386 0.12.x
+
+composer require h4cc/wkhtmltopdf-amd64 0.12.x
+composer require h4cc/wkhtmltoimage-amd64 0.12.x
+
+composer require barryvdh/laravel-snappy
+
+# fix error QSslSocket: cannot resolve CRYPTO_num_locks
+sudo apt install libssl1.0-dev
+
+# install font
+apt-get update && apt-get -y install libxrender1 libxext6 fontconfig fonts-freefont-ttf fonts-takao

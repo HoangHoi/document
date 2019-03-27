@@ -1,0 +1,5 @@
+server {
+        listen 80;
+        server_name fcp-agent.framgia.com;
+        return 301 $scheme://scp-agent.sun-asterisk.com$request_uri;
+}
