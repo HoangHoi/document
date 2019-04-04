@@ -1,0 +1,32 @@
+# 1. Boot from the live CD or live USB, in "Try Ubuntu" mode.
+# 2. Determine the partition number of your main partition.
+sudo fdisk -l
+
+# 3. Mount your partition:
+sudo mount /dev/sda2 /mnt  #Replace sda2 with the partition from step 2
+
+# 4. If you have a separate /boot, /var or /usr partitions, repeat steps 2 and 3 to mount these partitions to /mnt/boot, /mnt/var and /mnt/usr respectively
+sudo mount /dev/sdXW /mnt/boot
+sudo mount /dev/sdXY /mnt/var
+sudo mount /dev/sdXZ /mnt/usr
+
+# 5. Bind mount some other necessary stuff
+for i in /sys /proc /run /dev; do sudo mount --bind "$i" "/mnt$i"; done
+
+# 6. If Ubuntu is installed in EFI mode
+sudo mount /dev/sdXY /mnt/boot/efi
+
+# 7. Chroot into your Ubuntu install
+sudo chroot /mnt
+
+# 8. At this point, you're in your install, not the live session, and running as root. Update grub
+update-grub
+
+# 9. If you get errors or if going up to step 7 didn't fix your problem, go to step 8. Reinstall grub and Update grub
+grub-install /dev/sda
+update-grub
+
+# 10. If everything worked without errors, then you're all set:
+exit
+sudo reboot
+
