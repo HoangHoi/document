@@ -1,0 +1,8 @@
+#1
+
+$filesCount = count($files);
+
+if ($index !== null && $filesCount && $index < $filesCount) {
+    return $files[$index];
+}
+
