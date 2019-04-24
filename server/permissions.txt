@@ -1,0 +1,24 @@
+# Default file, folder group
+# If you want all new files in a particular directory to be owned by a particular group, just apply the setgid bit on it:
+
+chgrp www-data /some/dir
+chmod g+s /some/dir
+
+# If you have an existing tree of directories that you want to apply this behaviour to, you can do so with find:
+
+find /some/dir -type d -exec chgrp www-data {} +
+find /some/dir -type d -exec chmod g+s {} +
+
+
+# Default File Permissions (umask)
+0 rw- rwx
+1 rw- rw-
+2 r-- r-x
+3 r-- r--
+4 -w- -wx
+5 -w- -w-
+6 --x --x
+7 --- ---
+
+# ex: file permissions 644 or directory permissions 777
+umask 022
