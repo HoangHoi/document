@@ -20,3 +20,6 @@ chmod g+s /some/dir
 
 find /some/dir -type d -exec chgrp www-data {} +
 find /some/dir -type d -exec chmod g+s {} +
+
+find ./ -type f -exec chmod -x {} +
+find ./ -type d -exec chmod ug+rwx {} +
