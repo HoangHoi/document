@@ -1,0 +1,7 @@
+$ wget https://bootstrap.pypa.io/get-pip.py
+$ sudo python2 get-pip.py   # for python 2.7
+$ sudo python3 get-pip.py   # for python 3.x
+To install scipy using pip:
+
+$ pip2 install scipy    # for python 2.7
+$ pip3 install scipy    # for python 3.x
