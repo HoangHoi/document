@@ -1,0 +1,9 @@
+Description: create a SOCKS proxy on localhost:9999 (choose any unused port) over an SSH connection to <remoteserver> on port <portnum>, using username <user>. You may be prompted for your password.
+
+Template:
+
+$ ssh -D 9999 -f -C -N <user>@<remoteserver> -p <portnum>
+
+Actual Example:
+
+$ ssh -D 9999 -f -C -N johndoe@path.to.proxy.server.edu -p 52831
