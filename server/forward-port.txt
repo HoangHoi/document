@@ -1,1 +1,26 @@
+#============================
+Remote SSH Port Forwarding
+
+sudo nano /etc/ssh/sshd_config 
+#-----
+AllowTcpForwarding yes
+GatewayPorts yes
+X11Forwarding yes
+#-----
+
+sudo systemctl restart sshd
+
 ssh -nNf -R 8888:localhost:3000 vbh
+# or
+ssh -f -N admin@server1.example.com -R 5000:localhost:3000
+
+#=====================================
+Description: create a SOCKS proxy on localhost:9999 (choose any unused port) over an SSH connection to <remoteserver> on port <portnum>, using username <user>. You may be prompted for your password.
+
+Template:
+
+$ ssh -D 9999 -f -C -N <user>@<remoteserver> -p <portnum>
+
+Actual Example:
+
+$ ssh -D 9999 -f -C -N johndoe@path.to.proxy.server.edu -p 52831
