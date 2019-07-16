@@ -1,0 +1,2 @@
+sudo netstat -plnt
+
