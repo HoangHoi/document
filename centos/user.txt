@@ -4,6 +4,9 @@ adduser username
 # change password
 passwd username
 
+useradd -m -d /PATH/TO/FOLDER USERNAME
+
+
 # add sudo
 usermod -aG wheel username
 
