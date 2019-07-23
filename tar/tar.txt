@@ -1,0 +1,8 @@
+# Compress
+tar -czvf name-of-archive.tar.gz /path/to/directory-or-file
+
+# Extract
+tar -xzvf archive.tar.gz
+
+tar -xzvf archive.tar.gz -C /tmp
+
