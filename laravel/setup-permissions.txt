@@ -23,3 +23,13 @@ find /some/dir -type d -exec chmod g+s {} +
 
 find ./ -type f -exec chmod -x {} +
 find ./ -type d -exec chmod ug+rwx {} +
+
+
+# hay dùng
+cd laravel_root
+sudo chown -R $user:www-data ./
+sudo find ./ -type f -exec chmod 664 {} \;
+sudo find ./ -type d -exec chmod 775 {} \;
+sudo chmod -R ug+rwx storage ./bootstrap/cache
+sudo find ./ -type d -exec chmod g+s {} +
+

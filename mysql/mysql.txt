@@ -33,13 +33,13 @@ grant all on dbname.* to username@localhost;
 grant SELECT on dbname.* to username@localhost;
 
 #tao user phpmyadmin pass la 12344321
-create user 'phpmyadmin'@'localhost' identified by '12344321';
+create user 'admin'@'localhost' identified by '12344321';
 
 #xoa user demo
 drop user 'demo'@'localhost';
 
 # cap cho nguoi dung truy cap thong tin ma ho can
-GRANT ALL PRIVILEGES ON * . * TO 'newuser'@'localhost';
+GRANT ALL PRIVILEGES ON * . * TO 'admin'@'localhost';
 
 # thu hoi lai quyen
 REVOKE [type of permission] ON [database name].[table name] FROM '[username]'@'localhost';
