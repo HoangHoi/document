@@ -11,3 +11,5 @@ sudo apt-get install libapache2-mod-php7.0
 sudo apt-get install php7.1-cli php7.1-json php7.1-common libapache2-mod-php7.1 php7.1-mcrypt php7.1-mysql php7.1-mbstring php7.1-xml zip unzip php7.1-zip php-gettext php7.1-gd
 
 sudo apt-get install php7.2-cli php7.2-json php7.2-common php7.2-curl libapache2-mod-php7.2 php7.2-mysql php7.2-mbstring php7.2-xml zip unzip php7.2-zip php-gettext php7.2-gd
+
+sudo apt-get install php7.3-cli php7.3-json php7.3-common php7.3-curl libapache2-mod-php7.3 php7.3-mysql php7.3-mbstring php7.3-xml zip unzip php7.3-zip php-gettext php7.3-gd
