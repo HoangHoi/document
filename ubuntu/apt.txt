@@ -1,0 +1,31 @@
+apt-get
+
+You can run a simulation to see what would happen if you upgrade/install a package:
+
+apt-get -s install <package>
+To see all possible upgrades, run a upgrade in verbose mode and (to be safe) with simulation, press n to cancel:
+
+apt-get -V -s upgrade
+apt-cache
+
+The option policy can show the installed and the remote version (install candidate) of a package.
+
+apt-cache policy <package>
+apt-show-versions
+
+If installed, shows version information about one or more packages:
+
+apt-show-versions <package>
+Passing the -u switch with or without a package name will only show upgradeable packages.
+
+aptitude
+
+The console GUI of aptitude can display upgradeable packages with new versions. Open the menu 'Upgradable Packages'. Pressing v on a package will show more detailed version information.
+
+Or on the command-line:
+
+aptitude versions <package>
+Passing -V will show detailed information about versions, again to be safe with the simulation switch:
+
+aptitude -V -s install <package>
+Substituting install <package> with upgrade will show the versions from all upgradeable packages.

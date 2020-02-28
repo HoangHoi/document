@@ -1,0 +1,15 @@
+[Unit]
+Description=Upload video service
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=hoanghoi
+ExecStart=/usr/bin/env php /home/hoanghoi/www/videobackup/artisan backup
+
+[Install]
+WantedBy=multi-user.target
+
