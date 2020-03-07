@@ -1,7 +1,6 @@
 # import
-mysql -h127.0.0.1 -uroot -p fcp < fcp.sql
 gunzip < file_path_to_write_to.sql.gz | mysql --user=user_name --password=your_pass database_name
 
 # export
-mysqldump -u [user] -p [db_name] | gzip > [filename_to_compress.sql.gz]
+mysqldump database_name --password=your_pass --user=user_name --single-transaction | gzip >file_path_to_write_to.sql.gz
 
