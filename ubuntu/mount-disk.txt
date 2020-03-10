@@ -1,0 +1,10 @@
+# Check uid
+sudo blkid
+
+# Create dir
+mkdir /my/path/tomount
+
+sudo nano /etc/fstab
+##-----------------##
+/dev/disk/by-uuid/C8C453C4C453B402 /my/path/tomount auto nosuid,nodev,nofail,x-gvfs-show,x-gvfs-name=Data,uid=1000,gid=1000,umask=0022 0 0
+##-----------------##
