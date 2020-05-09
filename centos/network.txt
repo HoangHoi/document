@@ -1,0 +1,29 @@
+ip addr
+
+sudo cp /etc/resolv.conf /etc/resolv.conf.backup
+nano /etc/sysconfig/network-scripts/ifcfg-<your-interface-name>
+
+#-------- data ----------
+BOOTPROTO=static
+IPADDR=192.168.169.130
+NAME=eno16777736
+ONBOOT=yes
+#------------------------
+
+route -n
+ip route
+
+nano /etc/sysconfig/network
+
+#------- data ------
+NETWORKING=yes
+GATEWAY=192.168.169.2
+#-------------------
+
+nano /etc/resolv.conf
+#-------- data ------
+nameserver 8.8.8.8
+#--------------------
+
+systemctl restart network
+
