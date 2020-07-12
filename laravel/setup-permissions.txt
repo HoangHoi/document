@@ -25,9 +25,18 @@ find ./ -type f -exec chmod -x {} +
 find ./ -type d -exec chmod ug+rwx {} +
 
 
+sudo chown -R $user:apache ./
+
 # hay dùng
 cd laravel_root
-sudo chown -R $user:www-data ./
+sudo chown -R $user:www-data ./ 
+sudo find ./ -type f -exec chmod 644 {} \;
+sudo find ./ -type d -exec chmod 755 {} \;
+sudo chmod -R ug+rwx storage ./bootstrap/cache
+sudo find ./ -type d -exec chmod g+s {} +
+
+# centos
+sudo chown -R $user:apache ./
 sudo find ./ -type f -exec chmod 644 {} \;
 sudo find ./ -type d -exec chmod 755 {} \;
 sudo chmod -R ug+rwx storage ./bootstrap/cache

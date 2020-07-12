@@ -1,0 +1,3 @@
+mongoimport --db <database-name> --collection <collection-name> --file input.json
+
+

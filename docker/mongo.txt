@@ -1,0 +1,14 @@
+#create user
+db.createUser({ user: "sammy", pwd: "your_password", roles: [ { role: "readWrite", db: "mongo-test" } ] });
+
+# tạo user khi đã có database
+- bỏ config trong docker compose
+```
+#environment:
+#    MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+#    MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+#    MONGO_INITDB_DATABASE: ${MONGO_DB}
+```
+- docker-compose up
+- exec vào mongo và tạo user
+

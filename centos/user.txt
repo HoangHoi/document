@@ -9,7 +9,7 @@ useradd -m -d /PATH/TO/FOLDER USERNAME
 
 # add sudo
 usermod -aG wheel username
-
+usermod -aG sudo username
 visudo
 
 # ----------------------------------

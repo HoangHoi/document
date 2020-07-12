@@ -1,0 +1,41 @@
+# create a new group "admin"
+groupadd admin
+
+# get ent group
+getent group admin
+
+# create a new user "user1" and add this user to "admin" group
+useradd -g admin user1
+
+# get id user
+id user1
+
+# add this user to all these supplementary groups 
+useradd -G admin,devops,qa_team user2
+
+# Create a new user and add to existing primary and supplementary group
+useradd -g admin -G devops,qa_team user3
+
+# Change primary group of existing user
+usermod -g admin user4
+
+# Add user to Group (Supplementary or Secondary)
+usermod -G devops user4
+
+# Add user to multiple groups (Supplementary or Secondary) 
+usermod -G devops,qa_team user4
+
+# Add user to Group (Supplementary or Secondary) using gpasswd
+gpasswd -M user4 devops
+
+# Adding user user4 to group qa_team
+gpasswd -a user4 qa_team
+
+# Add multiple users to same group
+gpasswd -M user1,user2,user3 admin
+
+# Remove user from Group (Supplementary or Secondary)
+gpasswd -d user4 qa_team
+
+
+

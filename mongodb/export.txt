@@ -1,0 +1,3 @@
+mongoexport --db <database-name> --collection <collection-name> --out output.json
+
+

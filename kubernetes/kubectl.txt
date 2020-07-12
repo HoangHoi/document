@@ -1,0 +1,59 @@
+# Get list node
+kubectl get nodes
+kubectl get nodes -o wide
+
+# Get list pods
+kubectl get pods
+
+# Get detail list pod info
+kubectl get pods -o wide
+
+# Get service
+kubectl get svc
+
+# Exec pod and specific container
+kubectl exec -it [pod_name] -c [container_name] /bin/bash
+
+# Thông tin chi tiết
+kubectl describe pods nginx-pod
+kubectl describe nodes minikube
+
+# Xuất log của container bên trong Pod
+kubectl logs nginx-pod
+ 
+# Có thể chỉ định cụ thể log của container nào trong pod có nhiều container
+kubectl logs nginx-pod -c nginx-container
+ 
+# Lệnh này thì giống kiểu tail -f (follow log)
+kubectl logs -f nginx-pod
+ 
+# Xuất log Trong 1 giờ trước、lấy 10 record, hiển thị timestamps
+kubectl logs --since=1h --tail=10 --timestamps=true nginx-pod
+
+# Thực thi lệnh /bin/sh một container bên trong Pod
+kubectl exec -it nginx-pod /bin/sh
+ 
+# Trường hợp có nhiều container trong 1 Pod, thực thi lệnh /bin/sh đối với container được chỉ định.
+kubectl exec -it nginx-pod -c nginx-container /bin/sh
+ 
+# Trường hợp muốn thực thi container có parameter thêm param sau dấu 「--」
+kubectl exec -it nginx-pod -- /bin/ls -l /
+
+# port forward
+kubectl port-forward nginx-pod 8888:80
+
+#===================kubectl apply yml=======================
+# Trường hợp có thay đổi
+$ kubectl apply -f nginx-pod.yml
+pod "nginx-pod" configured
+ 
+# Trường hợp không có thay đổi
+$ kubectl apply -f nginx-pod.yml
+pod "nginx-pod" unchanged
+ 
+# Resource không tồn tại
+$ kubectl apply -f nginx-pod.yml
+pod "nginx-pod" created
+
+# Delete pod
+$ kubectl delete -f nginx-pod.yml
