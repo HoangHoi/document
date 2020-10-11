@@ -35,7 +35,7 @@ sudo find ./ -type d -exec chmod 755 {} \;
 sudo find ./storage -type d -exec chmod ug+rwx {} \;
 sudo find ./bootstrap/cache -type d -exec chmod ug+rwx {} \;
 sudo find ./ -type d -exec chmod g+s {} +
-
+git checkout .
 
 # centos
 sudo chown -R $user:apache ./
