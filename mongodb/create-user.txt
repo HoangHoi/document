@@ -1,0 +1,17 @@
+# create admin
+mongo
+>  use admin
+> db.createUser({user: "admin", pwd: "12344321", roles: [ { role: "userAdminAnyDatabase", db: "admin" }, "readWriteAnyDatabase" ]})
+> exit
+
+# enable authentication
+sudo nano /etc/mongod.conf
+## uncomment
+```
+#security:
+```
+## change to
+```
+security:
+  authorization: "enabled"
+```
