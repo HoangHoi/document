@@ -15,3 +15,7 @@ sudo nano /etc/mongod.conf
 security:
   authorization: "enabled"
 ```
+
+# create user
+db.createUser({user: "username", pwd: "12345678", roles:[{role: "readWrite", db: "database"}]});
+
