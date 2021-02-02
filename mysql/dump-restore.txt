@@ -1,0 +1,28 @@
+// command export
+mysqldump db1 db2 db3 > dump.sql
+
+// tar nén
+tar -zcvf folder.tar.gz folder
+
+// tar giải nén
+tar -zxvf file.tar.gz
+
+- Tăng: key_buffer_size
+- SET FOREIGN_KEY_CHECKS=0
+- SET UNIQUE_CHECKS = 0
+- SET AUTOCOMMIT = 0
+
+// file pre.sql
+SET @OLD_AUTOCOMMIT=@@AUTOCOMMIT, AUTOCOMMIT = 0;
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS = 0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS = 0;
+
+// file post.sql
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+SET AUTOCOMMIT = @OLD_AUTOCOMMIT;
+COMMIT;
+
+// command import
+cat pre.sql dump.sql post.sql | mysql -u root -p
+

@@ -32,8 +32,8 @@ cd laravel_root
 sudo chown -R $user:www-data ./ 
 sudo find ./ -type f -exec chmod 644 {} \;
 sudo find ./ -type d -exec chmod 755 {} \;
-sudo find ./storage -type d -exec chmod ug+rwx {} \;
-sudo find ./bootstrap/cache -type d -exec chmod ug+rwx {} \;
+sudo find ./storage -type d -exec chmod 775 {} \;
+sudo find ./bootstrap/cache -type d -exec chmod 775 {} \;
 sudo find ./ -type d -exec chmod g+s {} +
 git checkout .
 
