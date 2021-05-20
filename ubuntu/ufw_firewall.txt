@@ -1,0 +1,16 @@
+nano /etc/default/ufw
+```
+IPV6=yes
+```
+ufw status
+ufw default deny incoming
+ufw default allow outgoing
+ufw allow ssh
+ufw allow https
+ufw allow from 203.171.21.191
+ufw enable
+
+ufw disable
+ufw status numbered
+ufw delete 2
+ufw deny http

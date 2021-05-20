@@ -1,0 +1,20 @@
+version: "3"
+services:
+  node1:
+    container_name: elearing-node1
+    build: ${APP_PATH}
+    image: elearing/node:latest
+    working_dir: /www
+    env_file: .env
+    environment:
+      SERVER_NAME: node1
+    volumes:
+      - ${APP_PATH}:/www
+      - ${STORAGE_PATH}:/www/storage
+      - ${LOG_PATH}:/www/logs
+    networks:
+      - app-network
+    command: sh -c './wait-for.sh mongo:27017 -- ./wait-for.sh redis:6379 -- yarn start'
+    depends_on:
+      - mongo
+      - redis
