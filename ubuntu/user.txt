@@ -38,4 +38,8 @@ gpasswd -M user1,user2,user3 admin
 gpasswd -d user4 qa_team
 
 
+# Change name
+sudo usermod -l www -d /home/www -m ubuntu
+sudo groupmod -n www ubuntu
+sudo chfn -f "www" www
 

@@ -1,0 +1,12 @@
+sudo apt-add-repository ppa:ondrej/php
+sudo apt update
+sudo apt install -y php7.4-cli php7.4-json php7.4-common php7.4-curl php7.4-fpm php7.4-mysql php7.4-mbstring php7.4-xml zip unzip php7.4-zip php7.4-gd
+sudo apt install -y nginx
+sudo apt install -y mysql-server
+sudo mysql_secure_installation
+
+CREATE USER 'admin'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Amai#2021#HhH';
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' WITH GRANT OPTION;
+CREATE USER 'admin'@'%' IDENTIFIED WITH mysql_native_password BY 'Amai#2021#HhH';
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
