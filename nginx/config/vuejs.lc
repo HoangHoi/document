@@ -1,0 +1,16 @@
+server {
+    server_name vuejs.lc;
+    charset utf-8;
+
+    location / {
+      root /www/vuejs/dist;
+      index index.html;
+      try_files $uri $uri/ /index.html;
+    }
+
+    error_page 500 502 503 504 /500.html;
+    client_max_body_size 50M;
+    keepalive_timeout 10;
+
+    listen 80;
+}

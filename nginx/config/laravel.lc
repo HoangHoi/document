@@ -1,0 +1,27 @@
+server {
+    server_name laravel.lc;
+    root /www/laravel/public;
+    index index.php index.html index.htm;
+    charset utf-8;
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location ~ \.php$ {
+        fastcgi_pass 127.0.0.1:9000;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+
+    location ~* \.(svg|ttf|otf|eot|woff|woff2|pdf|doc|docx|xls|xlsx|png|jpg|gif)$ {
+        add_header Access-Control-Allow-Origin *;
+    }
+
+    error_page 404 /index.php;
+    error_page 500 502 503 504 /500.html;
+    client_max_body_size 50M;
+    keepalive_timeout 10;
+
+    listen 80;
+}
