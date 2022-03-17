@@ -1,0 +1,7 @@
+[Unit]
+Description=Mailhog
+After=network.target
+[Service]
+ExecStart=/usr/bin/env /usr/lib/mailhog/MailHog_linux_amd64 > /dev/null 2>&1 &
+[Install]
+WantedBy=multi-user.target
