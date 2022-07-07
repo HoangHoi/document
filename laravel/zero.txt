@@ -1,0 +1,20 @@
+myapp
+ ├──  releases
+ │       ├── 20150080072500
+ │       ├── 20150090083000
+ │       ├── 20150100093500
+ │       ├── 20150110104000
+ │       └── 20150120114500
+ │            ├── <checked out files from Git repository>
+ │            └── config
+ │                 ├──  database.yml -> /var/www/myapp/shared/config/database.yml
+ │                 └──  secrets.yml  -> /var/www/myapp/shared/config/secrets.yml
+ │
+ ├──  current -> /var/www/myapp/releases/20150120114500/
+ ├──  repo
+ │       └── <VCS related data>
+ └──  shared
+         ├── <linked_files and linked_dirs>
+         └── config
+              ├── database.yml
+              └── secrets.yml

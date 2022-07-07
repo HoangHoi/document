@@ -1,0 +1,19 @@
+# Git
+https://github.com/mailhog/MailHog/releases/tag/v1.0.1
+
+# Service
+nano /etc/systemd/system/mailhog.service
+
+```
+[Unit]
+Description=MailHog
+[Service]
+ExecStart=/usr/bin/env /usr/lib/mailhog/MailHog_linux_amd64 > /dev/null 2>&1 &
+[Install]
+WantedBy=multi-user.target
+```
+
+sudo systemctl start mailhog
+sudo systemctl enable mailhog
+chmod +x /usr/lib/mailhog/MailHog_linux_amd64
+
