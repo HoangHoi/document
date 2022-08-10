@@ -16,5 +16,6 @@ sudo apt-get install php7.3-cli php7.3-json php7.3-common php7.3-curl libapache2
 
 sudo apt-get install php7.4-cli php7.4-json php7.4-common php7.4-curl libapache2-mod-php7.4 php7.4-mysql php7.4-mbstring php7.4-xml zip unzip php7.4-zip php7.4-gd
 
-
 sudo apt install php8.1-cli php8.1-fpm php8.1-curl php8.1-mysql php8.1-mbstring php8.1-xml zip unzip php8.1-zip php8.1-gd
+
+sudo apt-get install php8.1-cli php8.1-common php8.1-curl php8.1-fpm php8.1-mysql php8.1-mbstring php8.1-xml zip unzip php8.1-zip php8.1-gd

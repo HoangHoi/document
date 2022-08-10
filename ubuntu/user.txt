@@ -43,3 +43,5 @@ sudo usermod -l www -d /home/www -m ubuntu
 sudo groupmod -n www ubuntu
 sudo chfn -f "www" www
 
+gpasswd -d www sudo
+
