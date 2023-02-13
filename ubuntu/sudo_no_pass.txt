@@ -1,0 +1,7 @@
+# edit file /etc/sudoers
+```
+user_name ALL=(ALL) NOPASSWD: /bin/date
+user_name ALL=(ALL) NOPASSWD: /bin/xrandr
+user_name ALL=(ALL) NOPASSWD: /usr/sbin/ntpdate
+user_name ALL=(ALL) NOPASSWD: /bin/nmcli
+```
