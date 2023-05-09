@@ -1,0 +1,9 @@
+1. Disable history for a current shell.
+```
+set +o history
+```
+
+2. Clean command history.
+```
+history -c
+```
