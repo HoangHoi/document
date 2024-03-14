@@ -1,0 +1,7 @@
+
+## Force HTTPS
+
+if(array_key_exists("HTTP_X_FORWARDED_PROTO", $_SERVER) && $_SERVER["HTTP_X_FORWARDED_PROTO"] == "https") {
+    $_SERVER["HTTPS"] = "on";
+}
+
