@@ -1,0 +1,37 @@
+# remove bundled ImageMagick
+sudo apt remove imagemagick -y
+
+# install base dependencies
+sudo apt install -y build-essential checkinstall libx11-dev libxext-dev zlib1g-dev libpng-dev libjpeg-dev libtiff-dev libwebp-dev libde265-dev libheif-dev
+
+# installing
+wget https://imagemagick.org/archive/ImageMagick.tar.gz
+tar xfz ImageMagick.tar.gz
+cd ImageMagick
+
+./configure --with-heic --with-webp
+
+make -j 8
+sudo make install
+sudo ldconfig /usr/local/lib
+
+# check
+identify --version
+
+# install php extension
+cd /usr/src/
+wget https://pecl.php.net/get/imagick-3.5.1.tgz
+tar -xvzf imagick-3.5.1.tgz
+cd imagick-3.5.1/
+
+sudo apt -y install php8.1-dev
+
+phpize
+./configure
+make -j$(nproc)
+make install
+phpenmod imagick
+
+
+
+mintypes: image/heif
